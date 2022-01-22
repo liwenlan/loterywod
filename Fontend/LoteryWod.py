@@ -3,13 +3,13 @@ import json
 import random
 from sys import argv
 from collections import Counter
-
+from Card import FrenchDeck
 
 def setGroupNum(person):
     group = 0
-    if person < 7:
+    if person < 6:
         group = person
-    elif person < 12:
+    elif person < 10:
         group = 2
     elif person < 16:
         group = 3
@@ -17,14 +17,17 @@ def setGroupNum(person):
         group = 4
     if person == 9:
         group = 3
+
+    for i in range(group):
+        settings['team'][i] = 'True'
+
     return group
 
 def selectCards():
-    lucky = random.choice(cards)  # 随机选取一个元素
-    # print(cards)
-    cards.remove(lucky)
-    # print(cards)
-    # print("---------------")
+    deck = FrenchDeck()
+    lucky = random.choice(deck)  # 随机选取一个元素
+    print(lucky)
+    deck.remove(lucky)
     return lucky
 
 def calculateScore(score_list, team):
@@ -36,41 +39,44 @@ def whoWins():
     print("input >> {}".format(instr))
     return instr
 
-def playA(person):  # 每人一队
-    groupNum = setGroupNum(person)
+def playA(group):  # 每人一队
+    score_list = [0] * group
 
-
-
-def playB(person):  # 分组
-    groupNum = setGroupNum(person)
-    score_list = [0] * groupNum
+def playB(group):  # 分组
+    score_list = [0] * group
     lucky_list = []
     for i in range(4):
-        lucky_list.append(selectCards())
-        team = whoWins()
-        calculateScore(score_list, team)
-    lucky_list.append(selectCards())
-    maxValue = max(score_list)
-    if maxValue in dict(Counter(score_list)):
-        print("Final PK !!!")
-        first = score_list.index(maxValue)
-        second = score_list.index(maxValue, first + 1)
-        print("team{} and team{}".format(first+1, second+1))
+        lucky = selectCards()
+        lucky_list.append(lucky)
+        # team = whoWins()
+        # calculateScore(score_list, team)
+    # lucky_list.append(selectCards())
+    # maxValue = max(score_list)
+    # if maxValue in dict(Counter(score_list)):
+    #     print("Final PK !!!")
+    #     first = score_list.index(maxValue)
+    #     second = score_list.index(maxValue, first + 1)
+    #     print("team{} and team{}".format(first+1, second+1))
     print('lucky is {}'.format(lucky_list))
 
+def playC(person):
+    pass
+
 if __name__ == '__main__':
-    cards = ['A', 'B', 'C', 'D'] * 13
-    configFile = "config"
+    # cards = ['A', 'B', 'C', 'D'] * 13
+    configFile = "input"
     main_wd = os.getcwd()
-    with open('{}/config/{}.json'.format(main_wd, configFile), mode='r', errors='ignore') as json_file:
+    with open('{}/{}.json'.format(main_wd, configFile), mode='r', errors='ignore') as json_file:
         settings = json.load(json_file)
 
     person = int(argv[1])
-    if person < 6 and person > 0:
-        playA(person)
-    elif person < 24:
-        playB(person)
-    for i in range(10):
-        selectCards()
+    group = setGroupNum(person)
 
+    if person > 0 and person < 6 :
+        playA(group)
+    elif person < 15:
+        playB(group)
+    else:
+        playC(group)
+    
     print("--------")
