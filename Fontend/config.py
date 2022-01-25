@@ -11,9 +11,16 @@ import sys
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class Config_Ui_Dialog(object):
+class Config_Ui_Dialog(QtWidgets.QMainWindow):
+    switch_window = QtCore.pyqtSignal()
+
+    def __init__(self):
+        super(Config_Ui_Dialog, self).__init__()
+        self.setupUi(self)
+        self.retranslateUi(self)
+
     def setupUi(self, Dialog):
-        Dialog.setObjectName("Dialog")
+        Dialog.setObjectName("Config")
         Dialog.resize(478, 300)
         self.label = QtWidgets.QLabel(Dialog)
         self.label.setGeometry(QtCore.QRect(190, 10, 101, 31))
@@ -78,6 +85,8 @@ class Config_Ui_Dialog(object):
         self.pushButton = QtWidgets.QPushButton(Dialog)
         self.pushButton.setGeometry(QtCore.QRect(310, 210, 121, 51))
         self.pushButton.setObjectName("pushButton")
+        self.pushButton.clicked.connect(self.goAthleteConfirm)
+
         self.lineEdit = QtWidgets.QLineEdit(Dialog)
         self.lineEdit.setGeometry(QtCore.QRect(90, 60, 113, 21))
         self.lineEdit.setObjectName("lineEdit")
@@ -100,7 +109,8 @@ class Config_Ui_Dialog(object):
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
-        self.label.setText(_translate("Dialog", "<html><head/><body><p><span style=\" font-size:18pt;\">动作库配置</span></p></body></html>"))
+        self.label.setText(_translate("Dialog",
+                                      "<html><head/><body><p><span style=\" font-size:18pt;\">动作库配置</span></p></body></html>"))
         self.label_2.setText(_translate("Dialog", "heart"))
         self.label_3.setText(_translate("Dialog", "spade"))
         self.label_4.setText(_translate("Dialog", "club"))
@@ -126,10 +136,15 @@ class Config_Ui_Dialog(object):
         self.lineEdit_3.setPlaceholderText(_translate("Dialog", "请输入梅花的动作"))
         self.lineEdit_4.setPlaceholderText(_translate("Dialog", "请输入方片的动作"))
         self.lineEdit_5.setPlaceholderText(_translate("Dialog", "请输入彩蛋的动作"))
+
+    def goAthleteConfirm(self):
+        self.switch_window.emit()
+
+
 if __name__ == '__main__':
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
-    ui = Config_Ui_Dialog()
-    ui.setupUi(MainWindow)
+    ui_config = Config_Ui_Dialog()
+    ui_config.setupUi(MainWindow)
     MainWindow.show()
     sys.exit(app.exec_())

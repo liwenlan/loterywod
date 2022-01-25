@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'wodLoop.ui'
+# Form implementation generated from reading ui file 'GroupSplit.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.4
 #
@@ -11,19 +11,23 @@ import sys
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class WodLoop_Ui_Dialog(QtWidgets.QMainWindow):
+class Group_Ui_Dialog(QtWidgets.QMainWindow):
+    switch_window_WodLoop = QtCore.pyqtSignal()
 
     def __init__(self):
-        super(WodLoop_Ui_Dialog, self).__init__()
+        super(Group_Ui_Dialog, self).__init__()
         self.setupUi(self)
         self.retranslateUi(self)
 
     def setupUi(self, Dialog):
-        Dialog.setObjectName("WodLoop")
+        Dialog.setObjectName("Dialog")
         Dialog.resize(482, 300)
         self.pushButton_2 = QtWidgets.QPushButton(Dialog)
-        self.pushButton_2.setGeometry(QtCore.QRect(382, 7, 91, 41))
+        self.pushButton_2.setGeometry(QtCore.QRect(412, 10, 61, 41))
         self.pushButton_2.setObjectName("pushButton_2")
+        self.label = QtWidgets.QLabel(Dialog)
+        self.label.setGeometry(QtCore.QRect(290, 40, 101, 141))
+        self.label.setObjectName("label")
         self.label_2 = QtWidgets.QLabel(Dialog)
         self.label_2.setGeometry(QtCore.QRect(20, 40, 31, 31))
         self.label_2.setObjectName("label_2")
@@ -39,6 +43,14 @@ class WodLoop_Ui_Dialog(QtWidgets.QMainWindow):
         self.label_6 = QtWidgets.QLabel(Dialog)
         self.label_6.setGeometry(QtCore.QRect(20, 240, 31, 31))
         self.label_6.setObjectName("label_6")
+        self.textBrowser = QtWidgets.QTextBrowser(Dialog)
+        self.textBrowser.setGeometry(QtCore.QRect(250, 200, 91, 31))
+        self.textBrowser.setObjectName("textBrowser")
+        self.pushButton = QtWidgets.QPushButton(Dialog)
+        self.pushButton.setGeometry(QtCore.QRect(350, 196, 113, 41))
+        self.pushButton.setObjectName("pushButton")
+        self.pushButton.clicked.connect(self.goWodLoop)
+
         self.textBrowser_2 = QtWidgets.QTextBrowser(Dialog)
         self.textBrowser_2.setGeometry(QtCore.QRect(50, 40, 171, 31))
         self.textBrowser_2.setObjectName("textBrowser_2")
@@ -55,71 +67,45 @@ class WodLoop_Ui_Dialog(QtWidgets.QMainWindow):
         self.textBrowser_6.setGeometry(QtCore.QRect(50, 240, 171, 31))
         self.textBrowser_6.setObjectName("textBrowser_6")
         self.textBrowser_7 = QtWidgets.QTextBrowser(Dialog)
-        self.textBrowser_7.setGeometry(QtCore.QRect(190, 6, 91, 31))
+        self.textBrowser_7.setGeometry(QtCore.QRect(190, 6, 81, 31))
         self.textBrowser_7.setObjectName("textBrowser_7")
-        self.label = QtWidgets.QLabel(Dialog)
-        self.label.setGeometry(QtCore.QRect(250, 40, 41, 31))
-        self.label.setObjectName("label")
-        self.label_7 = QtWidgets.QLabel(Dialog)
-        self.label_7.setGeometry(QtCore.QRect(250, 90, 41, 31))
-        self.label_7.setObjectName("label_7")
-        self.label_8 = QtWidgets.QLabel(Dialog)
-        self.label_8.setGeometry(QtCore.QRect(250, 140, 41, 31))
-        self.label_8.setObjectName("label_8")
-        self.label_9 = QtWidgets.QLabel(Dialog)
-        self.label_9.setGeometry(QtCore.QRect(250, 190, 41, 31))
-        self.label_9.setObjectName("label_9")
-        self.label_10 = QtWidgets.QLabel(Dialog)
-        self.label_10.setGeometry(QtCore.QRect(250, 240, 41, 31))
-        self.label_10.setObjectName("label_10")
-        self.spinBox = QtWidgets.QSpinBox(Dialog)
-        self.spinBox.setGeometry(QtCore.QRect(290, 40, 48, 24))
-        self.spinBox.setObjectName("spinBox")
-        self.spinBox_2 = QtWidgets.QSpinBox(Dialog)
-        self.spinBox_2.setGeometry(QtCore.QRect(290, 90, 48, 24))
-        self.spinBox_2.setObjectName("spinBox_2")
-        self.spinBox_3 = QtWidgets.QSpinBox(Dialog)
-        self.spinBox_3.setGeometry(QtCore.QRect(290, 140, 48, 24))
-        self.spinBox_3.setObjectName("spinBox_3")
-        self.spinBox_4 = QtWidgets.QSpinBox(Dialog)
-        self.spinBox_4.setGeometry(QtCore.QRect(290, 190, 48, 24))
-        self.spinBox_4.setObjectName("spinBox_4")
-        self.spinBox_5 = QtWidgets.QSpinBox(Dialog)
-        self.spinBox_5.setGeometry(QtCore.QRect(290, 240, 48, 24))
-        self.spinBox_5.setObjectName("spinBox_5")
-        self.label_11 = QtWidgets.QLabel(Dialog)
-        self.label_11.setGeometry(QtCore.QRect(360, 80, 91, 141))
-        self.label_11.setObjectName("label_11")
+        self.pushButton_3 = QtWidgets.QPushButton(Dialog)
+        self.pushButton_3.setGeometry(QtCore.QRect(245, 240, 101, 41))
+        self.pushButton_3.setObjectName("pushButton_3")
+        self.pushButton_4 = QtWidgets.QPushButton(Dialog)
+        self.pushButton_4.setGeometry(QtCore.QRect(351, 241, 111, 41))
+        self.pushButton_4.setObjectName("pushButton_4")
 
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
 
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
-        Dialog.setWindowTitle(_translate("Dialog", "WodLoop"))
-        self.pushButton_2.setText(_translate("Dialog", "重开一局"))
+        Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
+        self.pushButton_2.setText(_translate("Dialog", "返回"))
+        self.label.setText(_translate("Dialog", "TextLabel"))
         self.label_2.setText(_translate("Dialog", "A"))
         self.label_3.setText(_translate("Dialog", "B"))
         self.label_4.setText(_translate("Dialog", "C"))
         self.label_5.setText(_translate("Dialog", "D"))
         self.label_6.setText(_translate("Dialog", "E"))
+        self.pushButton.setText(_translate("Dialog", "确认"))
         self.textBrowser_7.setHtml(_translate("Dialog", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'.AppleSystemUIFont\'; font-size:13pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">LotteryWod</p></body></html>"))
-        self.label.setText(_translate("Dialog", "分数"))
-        self.label_7.setText(_translate("Dialog", "分数"))
-        self.label_8.setText(_translate("Dialog", "分数"))
-        self.label_9.setText(_translate("Dialog", "分数"))
-        self.label_10.setText(_translate("Dialog", "分数"))
-        self.label_11.setText(_translate("Dialog", "TextLabel"))
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">抽 签 分 组</p></body></html>"))
+        self.pushButton_3.setText(_translate("Dialog", "开始wod"))
+        self.pushButton_4.setText(_translate("Dialog", "重开一局"))
+
+    def goWodLoop(self):
+        self.switch_window_WodLoop.emit()
+
 
 if __name__ == '__main__':
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
-    ui = WodLoop_Ui_Dialog()
+    ui = Group_Ui_Dialog()
     ui.setupUi(MainWindow)
     MainWindow.show()
     sys.exit(app.exec_())
-

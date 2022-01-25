@@ -11,9 +11,17 @@ import sys
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class Confirm_Ui_Dialog(object):
+class Confirm_Ui_Dialog(QtWidgets.QMainWindow):
+    switch_window_rules = QtCore.pyqtSignal()
+    switch_window_groupSplit = QtCore.pyqtSignal()
+
+    def __init__(self):
+        super(Confirm_Ui_Dialog, self).__init__()
+        self.setupUi(self)
+        self.retranslateUi(self)
+
     def setupUi(self, Dialog):
-        Dialog.setObjectName("Dialog")
+        Dialog.setObjectName("Confirm")
         Dialog.resize(482, 300)
         self.label = QtWidgets.QLabel(Dialog)
         self.label.setGeometry(QtCore.QRect(120, 40, 231, 121))
@@ -24,9 +32,13 @@ class Confirm_Ui_Dialog(object):
         self.pushButton = QtWidgets.QPushButton(Dialog)
         self.pushButton.setGeometry(QtCore.QRect(280, 210, 113, 41))
         self.pushButton.setObjectName("pushButton")
+        self.pushButton.clicked.connect(self.goGroupSplit)
+
         self.pushButton_2 = QtWidgets.QPushButton(Dialog)
         self.pushButton_2.setGeometry(QtCore.QRect(360, 10, 113, 41))
         self.pushButton_2.setObjectName("pushButton_2")
+        self.pushButton_2.clicked.connect(self.goRules)
+
 
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
@@ -38,6 +50,14 @@ class Confirm_Ui_Dialog(object):
         self.lineEdit.setPlaceholderText(_translate("Dialog", "请输入人数"))
         self.pushButton.setText(_translate("Dialog", "确认"))
         self.pushButton_2.setText(_translate("Dialog", "规则说明"))
+
+    def goRules(self):
+        self.switch_window_rules.emit()
+
+    def goGroupSplit(self):
+        self.switch_window_groupSplit.emit()
+
+
 if __name__ == '__main__':
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()

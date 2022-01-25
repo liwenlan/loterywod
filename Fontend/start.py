@@ -9,11 +9,19 @@
 
 import sys
 from PyQt5 import QtCore, QtGui, QtWidgets
+from config import *
 
 
-class Start_Ui_Dialog(object):
+class Start_Ui_Dialog(QtWidgets.QMainWindow):
+    switch_window = QtCore.pyqtSignal()
+
+    def __init__(self):
+        super(Start_Ui_Dialog, self).__init__()
+        self.setupUi(self)
+        self.retranslateUi(self)
+
     def setupUi(self, Dialog):
-        Dialog.setObjectName("Dialog")
+        Dialog.setObjectName("Start")
         Dialog.resize(400, 300)
         self.pushButton = QtWidgets.QPushButton(Dialog)
         self.pushButton.setGeometry(QtCore.QRect(130, 210, 151, 51))
@@ -29,15 +37,19 @@ class Start_Ui_Dialog(object):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
         self.pushButton.setText(_translate("Dialog", "配置动作库"))
-        #self.pushButton.clicked.connect()
+        self.pushButton.clicked.connect(self.goConfig)
         jpg = QtGui.QPixmap(r'../Resources/web.png').scaled(self.label.width(), self.label.height())
         self.label.setPixmap(jpg)
-        #self.label.setText(_translate("Dialog", "TextLabel"))
+        # self.label.setText(_translate("Dialog", "TextLabel"))
 
-if __name__ == '__main__':
-    app = QtWidgets.QApplication(sys.argv)
-    MainWindow = QtWidgets.QMainWindow()
-    ui = Start_Ui_Dialog()
-    ui.setupUi(MainWindow)
-    MainWindow.show()
-    sys.exit(app.exec_())
+    def goConfig(self):
+        self.switch_window.emit()
+
+# if __name__ == '__main__':
+#     app = QtWidgets.QApplication(sys.argv)
+#     MainWindow = QtWidgets.QMainWindow()
+#     ui_start = Start_Ui_Dialog()
+#     ui_config = Config_Ui_Dialog()
+#     ui_start.setupUi(MainWindow)
+#     MainWindow.show()
+#     sys.exit(app.exec_())
