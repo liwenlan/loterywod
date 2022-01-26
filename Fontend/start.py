@@ -45,11 +45,3 @@ class Start_Ui_Dialog(QtWidgets.QMainWindow):
     def goConfig(self):
         self.switch_window.emit()
 
-# if __name__ == '__main__':
-#     app = QtWidgets.QApplication(sys.argv)
-#     MainWindow = QtWidgets.QMainWindow()
-#     ui_start = Start_Ui_Dialog()
-#     ui_config = Config_Ui_Dialog()
-#     ui_start.setupUi(MainWindow)
-#     MainWindow.show()
-#     sys.exit(app.exec_())

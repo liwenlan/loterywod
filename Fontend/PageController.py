@@ -44,6 +44,7 @@ class Controller:
     def show_groupSplit(self):
         self.groupSplit = Group_Ui_Dialog()
         self.groupSplit.switch_window_WodLoop.connect(self.show_wodLoop)
+        self.groupSplit.switch_window_AthleteConfirm.connect(self.show_athleteConfirm)
         self.athleteConfirm.close()
         self.groupSplit.show()
 

@@ -13,6 +13,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 
 class Group_Ui_Dialog(QtWidgets.QMainWindow):
     switch_window_WodLoop = QtCore.pyqtSignal()
+    switch_window_AthleteConfirm = QtCore.pyqtSignal()
 
     def __init__(self):
         super(Group_Ui_Dialog, self).__init__()
@@ -22,9 +23,6 @@ class Group_Ui_Dialog(QtWidgets.QMainWindow):
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
         Dialog.resize(482, 300)
-        self.pushButton_2 = QtWidgets.QPushButton(Dialog)
-        self.pushButton_2.setGeometry(QtCore.QRect(412, 10, 61, 41))
-        self.pushButton_2.setObjectName("pushButton_2")
         self.label = QtWidgets.QLabel(Dialog)
         self.label.setGeometry(QtCore.QRect(290, 40, 101, 141))
         self.label.setObjectName("label")
@@ -46,10 +44,6 @@ class Group_Ui_Dialog(QtWidgets.QMainWindow):
         self.textBrowser = QtWidgets.QTextBrowser(Dialog)
         self.textBrowser.setGeometry(QtCore.QRect(250, 200, 91, 31))
         self.textBrowser.setObjectName("textBrowser")
-        self.pushButton = QtWidgets.QPushButton(Dialog)
-        self.pushButton.setGeometry(QtCore.QRect(350, 196, 113, 41))
-        self.pushButton.setObjectName("pushButton")
-        self.pushButton.clicked.connect(self.goWodLoop)
 
         self.textBrowser_2 = QtWidgets.QTextBrowser(Dialog)
         self.textBrowser_2.setGeometry(QtCore.QRect(50, 40, 171, 31))
@@ -69,12 +63,24 @@ class Group_Ui_Dialog(QtWidgets.QMainWindow):
         self.textBrowser_7 = QtWidgets.QTextBrowser(Dialog)
         self.textBrowser_7.setGeometry(QtCore.QRect(190, 6, 81, 31))
         self.textBrowser_7.setObjectName("textBrowser_7")
+        self.pushButton = QtWidgets.QPushButton(Dialog)
+        self.pushButton.setGeometry(QtCore.QRect(350, 196, 113, 41))
+        self.pushButton.setObjectName("pushButton_enter")
+
+        self.pushButton_2 = QtWidgets.QPushButton(Dialog)
+        self.pushButton_2.setGeometry(QtCore.QRect(412, 10, 61, 41))
+        self.pushButton_2.setObjectName("pushButton_back")
+        self.pushButton_2.clicked.connect(self.goAthleteConfirm)
+
         self.pushButton_3 = QtWidgets.QPushButton(Dialog)
         self.pushButton_3.setGeometry(QtCore.QRect(245, 240, 101, 41))
-        self.pushButton_3.setObjectName("pushButton_3")
+        self.pushButton_3.setObjectName("pushButton_wodStart")
+        self.pushButton_3.clicked.connect(self.goWodLoop)
+
+
         self.pushButton_4 = QtWidgets.QPushButton(Dialog)
         self.pushButton_4.setGeometry(QtCore.QRect(351, 241, 111, 41))
-        self.pushButton_4.setObjectName("pushButton_4")
+        self.pushButton_4.setObjectName("pushButton_restart")
 
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
@@ -82,30 +88,26 @@ class Group_Ui_Dialog(QtWidgets.QMainWindow):
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
-        self.pushButton_2.setText(_translate("Dialog", "返回"))
         self.label.setText(_translate("Dialog", "TextLabel"))
         self.label_2.setText(_translate("Dialog", "A"))
         self.label_3.setText(_translate("Dialog", "B"))
         self.label_4.setText(_translate("Dialog", "C"))
         self.label_5.setText(_translate("Dialog", "D"))
         self.label_6.setText(_translate("Dialog", "E"))
-        self.pushButton.setText(_translate("Dialog", "确认"))
         self.textBrowser_7.setHtml(_translate("Dialog", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'.AppleSystemUIFont\'; font-size:13pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">抽 签 分 组</p></body></html>"))
+        self.pushButton.setText(_translate("Dialog", "确认"))
+        self.pushButton_2.setText(_translate("Dialog", "返回"))
         self.pushButton_3.setText(_translate("Dialog", "开始wod"))
         self.pushButton_4.setText(_translate("Dialog", "重开一局"))
 
     def goWodLoop(self):
         self.switch_window_WodLoop.emit()
 
+    def goAthleteConfirm(self):
+        self.switch_window_AthleteConfirm.emit()
 
-if __name__ == '__main__':
-    app = QtWidgets.QApplication(sys.argv)
-    MainWindow = QtWidgets.QMainWindow()
-    ui = Group_Ui_Dialog()
-    ui.setupUi(MainWindow)
-    MainWindow.show()
-    sys.exit(app.exec_())
+

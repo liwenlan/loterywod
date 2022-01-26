@@ -115,11 +115,5 @@ class WodLoop_Ui_Dialog(QtWidgets.QMainWindow):
         self.label_10.setText(_translate("Dialog", "分数"))
         self.label_11.setText(_translate("Dialog", "TextLabel"))
 
-if __name__ == '__main__':
-    app = QtWidgets.QApplication(sys.argv)
-    MainWindow = QtWidgets.QMainWindow()
-    ui = WodLoop_Ui_Dialog()
-    ui.setupUi(MainWindow)
-    MainWindow.show()
-    sys.exit(app.exec_())
+
 
