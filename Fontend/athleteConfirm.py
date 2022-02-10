@@ -9,6 +9,7 @@
 
 import sys
 from PyQt5 import QtCore, QtGui, QtWidgets
+from LoteryWod import *
 
 
 class Confirm_Ui_Dialog(QtWidgets.QMainWindow):
@@ -33,6 +34,7 @@ class Confirm_Ui_Dialog(QtWidgets.QMainWindow):
         self.pushButton.setGeometry(QtCore.QRect(280, 210, 113, 41))
         self.pushButton.setObjectName("pushButton")
         self.pushButton.clicked.connect(self.goGroupSplit)
+        #self.pushButton.clicked.connect(self.goGroupSplit)
 
         self.pushButton_2 = QtWidgets.QPushButton(Dialog)
         self.pushButton_2.setGeometry(QtCore.QRect(360, 10, 113, 41))
@@ -55,7 +57,15 @@ class Confirm_Ui_Dialog(QtWidgets.QMainWindow):
         self.switch_window_rules.emit()
 
     def goGroupSplit(self):
+        self.confirmGroup()
         self.switch_window_groupSplit.emit()
+
+    def confirmGroup(self):
+        athleteNum = int(self.lineEdit.text())
+        print('athleteNum',athleteNum)
+        setGroupNum(athleteNum)
+
+
 
 
 if __name__ == '__main__':

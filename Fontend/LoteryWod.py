@@ -18,9 +18,15 @@ def setGroupNum(person):
     if person == 9:
         group = 3
 
+    configFile = "input"
+    main_wd = os.getcwd()
+    with open('{}/{}.json'.format(main_wd, configFile), mode='r', errors='ignore') as json_file:
+        settings = json.load(json_file)
+
     for i in range(group):
         settings['team'][i] = 'True'
 
+    print('loterywod', group)
     return group
 
 def selectCards():

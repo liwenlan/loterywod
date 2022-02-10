@@ -41,9 +41,6 @@ class Group_Ui_Dialog(QtWidgets.QMainWindow):
         self.label_6 = QtWidgets.QLabel(Dialog)
         self.label_6.setGeometry(QtCore.QRect(20, 240, 31, 31))
         self.label_6.setObjectName("label_6")
-        self.textBrowser = QtWidgets.QTextBrowser(Dialog)
-        self.textBrowser.setGeometry(QtCore.QRect(250, 200, 91, 31))
-        self.textBrowser.setObjectName("textBrowser")
 
         self.textBrowser_2 = QtWidgets.QTextBrowser(Dialog)
         self.textBrowser_2.setGeometry(QtCore.QRect(50, 40, 171, 31))
@@ -81,6 +78,10 @@ class Group_Ui_Dialog(QtWidgets.QMainWindow):
         self.pushButton_4 = QtWidgets.QPushButton(Dialog)
         self.pushButton_4.setGeometry(QtCore.QRect(351, 241, 111, 41))
         self.pushButton_4.setObjectName("pushButton_restart")
+
+        self.lineEdit = QtWidgets.QLineEdit(Dialog)
+        self.lineEdit.setGeometry(QtCore.QRect(250, 200, 91, 31))
+        self.lineEdit.setObjectName("lineEdit")
 
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
