@@ -9,7 +9,7 @@
 
 import sys
 from PyQt5 import QtCore, QtGui, QtWidgets
-
+from LoteryWod import *
 
 class WodLoop_Ui_Dialog(QtWidgets.QMainWindow):
 
@@ -21,6 +21,11 @@ class WodLoop_Ui_Dialog(QtWidgets.QMainWindow):
     def setupUi(self, Dialog):
         Dialog.setObjectName("WodLoop")
         Dialog.resize(482, 300)
+        self.pushButton = QtWidgets.QPushButton(Dialog)
+        self.pushButton.setGeometry(QtCore.QRect(360, 240, 91, 31))
+        self.pushButton.setObjectName("pushButton")
+        self.pushButton.clicked.connect(self.pickWod)
+
         self.pushButton_2 = QtWidgets.QPushButton(Dialog)
         self.pushButton_2.setGeometry(QtCore.QRect(382, 7, 91, 41))
         self.pushButton_2.setObjectName("pushButton_2")
@@ -97,6 +102,7 @@ class WodLoop_Ui_Dialog(QtWidgets.QMainWindow):
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "WodLoop"))
+        self.pushButton.setText(_translate("Dialog", "抽取Wod"))
         self.pushButton_2.setText(_translate("Dialog", "重开一局"))
         self.label_2.setText(_translate("Dialog", "A"))
         self.label_3.setText(_translate("Dialog", "B"))
@@ -113,7 +119,12 @@ class WodLoop_Ui_Dialog(QtWidgets.QMainWindow):
         self.label_8.setText(_translate("Dialog", "分数"))
         self.label_9.setText(_translate("Dialog", "分数"))
         self.label_10.setText(_translate("Dialog", "分数"))
-        self.label_11.setText(_translate("Dialog", "TextLabel"))
+        self.label_11.setText(_translate("Dialog", "开始吧"))
+
+    def pickWod(self):
+        luckyWod = selectWod()
+        self.label_11.setText(luckyWod)
+
 
 
 
