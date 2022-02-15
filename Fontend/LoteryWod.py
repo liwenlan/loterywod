@@ -32,7 +32,7 @@ def setGroupNum(person):
 def selectCards():
     cardDeck = FrenchDeck()
     luckyCard = random.choice(cardDeck)  # 随机选取一个元素
-    print(luckyCard)
+    print("loterywod", luckyCard)
     cardDeck.remove(luckyCard)
     return luckyCard
 
@@ -42,7 +42,6 @@ def selectWod():
     print(luckyWod)
     wodDeck.remove(luckyWod)
     return luckyWod
-
 
 def calculateScore(score_list, team):
     score_list[team - 1] = score_list[team - 1] + 1

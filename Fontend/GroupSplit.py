@@ -114,7 +114,9 @@ class Group_Ui_Dialog(QtWidgets.QMainWindow):
 
     def pickCard(self):
         luckyDog = selectCards()
-        self.label.setText(luckyDog)
+        picPath = '../Resources/PokerPictures/' + luckyDog + '.jpg'
+        print(picPath)
+        self.label.setText(picPath)
 
 
 
