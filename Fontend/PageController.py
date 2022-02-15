@@ -53,8 +53,6 @@ class Controller:
         self.groupSplit.close()
         self.wodLoop.show()
 
-
-
 def main():
     app = QtWidgets.QApplication(sys.argv)
     controller = Controller()

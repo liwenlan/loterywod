@@ -10,9 +10,10 @@
 import sys
 from PyQt5 import QtCore, QtGui, QtWidgets
 from config import *
-
+from inputConfig import *
 
 class Start_Ui_Dialog(QtWidgets.QMainWindow):
+
     switch_window = QtCore.pyqtSignal()
 
     def __init__(self):

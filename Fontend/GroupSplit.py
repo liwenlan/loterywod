@@ -89,7 +89,7 @@ class Group_Ui_Dialog(QtWidgets.QMainWindow):
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
-        self.label.setText(_translate("Dialog", "TextLabel"))
+        self.label.setText(_translate("Dialog", "cardRegion"))
         self.label_2.setText(_translate("Dialog", "A"))
         self.label_3.setText(_translate("Dialog", "B"))
         self.label_4.setText(_translate("Dialog", "C"))
