@@ -29,17 +29,20 @@ def setGroupNum(person):
     print('loterywod', group)
     return group
 
+# def randomCards():
+#     randomDeck = FrenchDeck()
+#     randomCard = random.choice(randomDeck)  # 随机选取一个元素
+#     return randomCard
+
 def selectCards():
     cardDeck = FrenchDeck()
     luckyCard = random.choice(cardDeck)  # 随机选取一个元素
-    print("loterywod", luckyCard)
     cardDeck.remove(luckyCard)
     return luckyCard
 
 def selectWod():
     wodDeck = FrenchDeck()
     luckyWod = random.choice(wodDeck)  # 随机选取一个元素
-    print(luckyWod)
     wodDeck.remove(luckyWod)
     return luckyWod
 

@@ -19,16 +19,18 @@ class WodLoop_Ui_Dialog(QtWidgets.QMainWindow):
         self.retranslateUi(self)
 
     def setupUi(self, Dialog):
-        Dialog.setObjectName("WodLoop")
+        Dialog.setObjectName("Dialog")
         Dialog.resize(482, 300)
+
         self.pushButton = QtWidgets.QPushButton(Dialog)
-        self.pushButton.setGeometry(QtCore.QRect(360, 240, 91, 31))
+        self.pushButton.setGeometry(QtCore.QRect(350, 230, 111, 41))
         self.pushButton.setObjectName("pushButton")
         self.pushButton.clicked.connect(self.pickWod)
 
         self.pushButton_2 = QtWidgets.QPushButton(Dialog)
         self.pushButton_2.setGeometry(QtCore.QRect(382, 7, 91, 41))
         self.pushButton_2.setObjectName("pushButton_2")
+
         self.label_2 = QtWidgets.QLabel(Dialog)
         self.label_2.setGeometry(QtCore.QRect(20, 40, 31, 31))
         self.label_2.setObjectName("label_2")
@@ -60,7 +62,7 @@ class WodLoop_Ui_Dialog(QtWidgets.QMainWindow):
         self.textBrowser_6.setGeometry(QtCore.QRect(50, 240, 171, 31))
         self.textBrowser_6.setObjectName("textBrowser_6")
         self.textBrowser_7 = QtWidgets.QTextBrowser(Dialog)
-        self.textBrowser_7.setGeometry(QtCore.QRect(190, 6, 91, 31))
+        self.textBrowser_7.setGeometry(QtCore.QRect(190, 6, 121, 31))
         self.textBrowser_7.setObjectName("textBrowser_7")
         self.label = QtWidgets.QLabel(Dialog)
         self.label.setGeometry(QtCore.QRect(250, 40, 41, 31))
@@ -93,37 +95,49 @@ class WodLoop_Ui_Dialog(QtWidgets.QMainWindow):
         self.spinBox_5.setGeometry(QtCore.QRect(290, 240, 48, 24))
         self.spinBox_5.setObjectName("spinBox_5")
         self.label_11 = QtWidgets.QLabel(Dialog)
-        self.label_11.setGeometry(QtCore.QRect(360, 80, 91, 141))
+        self.label_11.setGeometry(QtCore.QRect(360, 60, 91, 141))
         self.label_11.setObjectName("label_11")
-
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
 
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
-        Dialog.setWindowTitle(_translate("Dialog", "WodLoop"))
-        self.pushButton.setText(_translate("Dialog", "抽取Wod"))
+        Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
         self.pushButton_2.setText(_translate("Dialog", "重开一局"))
         self.label_2.setText(_translate("Dialog", "A"))
         self.label_3.setText(_translate("Dialog", "B"))
         self.label_4.setText(_translate("Dialog", "C"))
         self.label_5.setText(_translate("Dialog", "D"))
         self.label_6.setText(_translate("Dialog", "E"))
-        self.textBrowser_7.setHtml(_translate("Dialog", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'.AppleSystemUIFont\'; font-size:13pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">LotteryWod</p></body></html>"))
+        self.textBrowser_7.setHtml(_translate("Dialog",
+                                              "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+                                              "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+                                              "p, li { white-space: pre-wrap; }\n"
+                                              "</style></head><body style=\" font-family:\'.AppleSystemUIFont\'; font-size:13pt; font-weight:400; font-style:normal;\">\n"
+                                              "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:14pt;\">LotteryWod</span></p></body></html>"))
         self.label.setText(_translate("Dialog", "分数"))
         self.label_7.setText(_translate("Dialog", "分数"))
         self.label_8.setText(_translate("Dialog", "分数"))
         self.label_9.setText(_translate("Dialog", "分数"))
         self.label_10.setText(_translate("Dialog", "分数"))
-        self.label_11.setText(_translate("Dialog", "开始吧"))
+        #self.label_11.setText(_translate("Dialog", "TextLabel"))
+
+        picPath = '../Resources/PokerPictures/pokerBack.jpg'
+        print(picPath)
+        pic = QtGui.QPixmap(picPath)
+        self.label_11.setPixmap(pic)
+        self.label_11.setScaledContents(True)
+
+        self.pushButton.setText(_translate("Dialog", "抽取一个wod"))
 
     def pickWod(self):
         luckyWod = selectWod()
-        self.label_11.setText(luckyWod)
+        picPath = '../Resources/PokerPictures/' + luckyWod + '.jpg'
+        pic = QtGui.QPixmap(picPath)
+        self.label_11.setPixmap(pic)
+        self.label_11.setScaledContents(True)
+
+        #self.label_11.setText(luckyWod)
 
 
 

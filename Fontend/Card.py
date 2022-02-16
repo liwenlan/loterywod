@@ -2,6 +2,7 @@ import collections
 
 Card = collections.namedtuple("Card", ['rank', 'suit'])
 
+
 class FrenchDeck:
     # suits = "heart, spade, club, diamond".split()
     # ranks = [str(n) for n in range(2, 11)] + list("JQKA")
@@ -14,8 +15,8 @@ class FrenchDeck:
              'club_A', 'club_2', 'club_3', 'club_4', 'club_5', 'club_6', 'club_7',
              'club_8', 'club_9', 'club_10', 'club_J', 'club_Q', 'club_K',
 
-             'diamond_A', 'diamond_2', 'diamond_3', 'diamond_4', 'diamond_5', 'diamond_6','diamond_7',
-             'diamond_8', 'diamond_9', 'diamond_10', 'diamond_J', 'diamond_Q','diamond_K',
+             'diamond_A', 'diamond_2', 'diamond_3', 'diamond_4', 'diamond_5', 'diamond_6', 'diamond_7',
+             'diamond_8', 'diamond_9', 'diamond_10', 'diamond_J', 'diamond_Q', 'diamond_K',
              ]
 
     def __len__(self):
@@ -27,5 +28,3 @@ class FrenchDeck:
     def remove(self, card):
         print("card", card)
         self.cards.remove(card)
-
-
