@@ -15,8 +15,9 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Config_Ui_Dialog(QtWidgets.QMainWindow):
     switch_window = QtCore.pyqtSignal()
 
-    def __init__(self):
+    def __init__(self, action):
         super(Config_Ui_Dialog, self).__init__()
+        self.actionConfig = action
         self.setupUi(self)
         self.retranslateUi(self)
 
@@ -84,8 +85,6 @@ class Config_Ui_Dialog(QtWidgets.QMainWindow):
         self.checkBox_13.setGeometry(QtCore.QRect(430, 110, 41, 20))
         self.checkBox_13.setObjectName("checkBox_13")
 
-
-
         self.pushButton = QtWidgets.QPushButton(Dialog)
         self.pushButton.setGeometry(QtCore.QRect(310, 210, 121, 51))
         self.pushButton.setObjectName("enterConfig")
@@ -143,34 +142,35 @@ class Config_Ui_Dialog(QtWidgets.QMainWindow):
         self.lineEdit_5.setPlaceholderText(_translate("Dialog", "请输入彩蛋的动作"))
 
     def collectConfigration(self):
-        heart   = self.lineEdit.text()
-        spade   = self.lineEdit_2.text()
-        club    = self.lineEdit_3.text()
+        heart = self.lineEdit.text()
+        spade = self.lineEdit_2.text()
+        club = self.lineEdit_3.text()
         diamond = self.lineEdit_4.text()
-        bonus   = self.lineEdit_5.text()
-        CardA   = self.checkBox.text()
-        Card2   = self.checkBox_2.text()
-        Card3   = self.checkBox_3.text()
-        Card4   = self.checkBox_4.text()
-        Card5   = self.checkBox_5.text()
-        Card6   = self.checkBox_6.text()
-        Card7   = self.checkBox_7.text()
-        Card8   = self.checkBox_8.text()
-        Card9   = self.checkBox_9.text()
-        Card10  = self.checkBox_10.text()
-        CardJ   = self.checkBox_11.text()
-        CardQ   = self.checkBox_12.text()
-        CardK   = self.checkBox_13.text()
+        bonus = self.lineEdit_5.text()
+        self.actionConfig.update({'heart': heart, 'spade': spade, 'club': club, 'diamond': diamond, 'bonus': bonus})
+        print(self.actionConfig)
+        CardA = self.checkBox.text()
+        Card2 = self.checkBox_2.text()
+        Card3 = self.checkBox_3.text()
+        Card4 = self.checkBox_4.text()
+        Card5 = self.checkBox_5.text()
+        Card6 = self.checkBox_6.text()
+        Card7 = self.checkBox_7.text()
+        Card8 = self.checkBox_8.text()
+        Card9 = self.checkBox_9.text()
+        Card10 = self.checkBox_10.text()
+        CardJ = self.checkBox_11.text()
+        CardQ = self.checkBox_12.text()
+        CardK = self.checkBox_13.text()
 
-        print(heart, spade, club, diamond, bonus,
-              CardA, Card2, Card3, Card4, Card5,
-              Card6, Card7, Card8, Card9, Card10,
-              CardJ, CardQ, CardK)
+        # print(heart, spade, club, diamond, bonus,
+        #       CardA, Card2, Card3, Card4, Card5,
+        #       Card6, Card7, Card8, Card9, Card10,
+        #       CardJ, CardQ, CardK)
 
     def setWodConfig(self):
-        #暂未实现
+        # 暂未实现
         a = 1
 
     def goAthleteConfirm(self):
         self.switch_window.emit()
-

@@ -120,7 +120,7 @@ class Group_Ui_Dialog(QtWidgets.QMainWindow):
         self.switch_window_AthleteConfirm.emit()
 
     def pickCard(self):
-        luckyDog = selectCards()
+        luckyDog = selectAthlete()
         picPath = '../Resources/PokerPictures/' + luckyDog + '.jpg'
         pic = QtGui.QPixmap(picPath).scaled(self.label.width(), self.label.height())
         self.label.setPixmap(pic)

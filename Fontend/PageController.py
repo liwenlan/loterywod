@@ -1,4 +1,5 @@
 from config import *
+from input import *
 from start import *
 from athleteConfirm import *
 from rules import *
@@ -10,13 +11,15 @@ from PyQt5 import QtCore, QtWidgets
 
 class Controller:
 
-    def __init__(self):
+    def __init__(self, input):
         self.start = None
         self.config = None
         self.athleteConfirm = None
         self.rules = None
         self.wodLoop = None
         self.groupSplit = None
+        self.action = input.actionConfig
+        self.team = input.team
 
     def show_start(self):
         self.start = Start_Ui_Dialog()
@@ -24,7 +27,7 @@ class Controller:
         self.start.show()
 
     def show_config(self):
-        self.config = Config_Ui_Dialog()
+        self.config = Config_Ui_Dialog(self.action)
         self.config.switch_window.connect(self.show_athleteConfirm)
         self.start.close()
         self.config.show()
@@ -54,8 +57,9 @@ class Controller:
         self.wodLoop.show()
 
 def main():
+    input = Input()
     app = QtWidgets.QApplication(sys.argv)
-    controller = Controller()
+    controller = Controller(input)
     controller.show_start()
     sys.exit(app.exec_())
 

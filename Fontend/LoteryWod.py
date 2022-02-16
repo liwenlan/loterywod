@@ -3,7 +3,7 @@ import json
 import random
 from sys import argv
 from collections import Counter
-from Card import FrenchDeck
+from Card import AthleteDeck, WodDeck
 
 def setGroupNum(person):
     group = 0
@@ -34,17 +34,17 @@ def setGroupNum(person):
 #     randomCard = random.choice(randomDeck)  # 随机选取一个元素
 #     return randomCard
 
-def selectCards():
-    cardDeck = FrenchDeck()
-    luckyCard = random.choice(cardDeck)  # 随机选取一个元素
-    cardDeck.remove(luckyCard)
-    return luckyCard
-
 def selectWod():
-    wodDeck = FrenchDeck()
+    wodDeck = WodDeck()
     luckyWod = random.choice(wodDeck)  # 随机选取一个元素
     wodDeck.remove(luckyWod)
     return luckyWod
+
+def selectAthlete():
+    athleteDeck = AthleteDeck()
+    luckyCard = random.choice(athleteDeck)  # 随机选取一个元素
+    return luckyCard
+
 
 def calculateScore(score_list, team):
     score_list[team - 1] = score_list[team - 1] + 1
@@ -62,7 +62,7 @@ def playB(group):  # 分组
     score_list = [0] * group
     lucky_list = []
     for i in range(4):
-        lucky = selectCards()
+        lucky = selectWod()
         lucky_list.append(lucky)
         # team = whoWins()
         # calculateScore(score_list, team)

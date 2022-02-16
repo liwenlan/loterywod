@@ -3,7 +3,7 @@ import collections
 Card = collections.namedtuple("Card", ['rank', 'suit'])
 
 
-class FrenchDeck:
+class WodDeck:
     # suits = "heart, spade, club, diamond".split()
     # ranks = [str(n) for n in range(2, 11)] + list("JQKA")
     cards = ['heart_A', 'heart_2', 'heart_3', 'heart_4', 'heart_5', 'heart_6', 'heart_7',
@@ -28,3 +28,15 @@ class FrenchDeck:
     def remove(self, card):
         print("card", card)
         self.cards.remove(card)
+
+
+class AthleteDeck:
+    # suits = "heart, spade, club, diamond".split()
+    # ranks = [str(n) for n in range(2, 11)] + list("JQKA")
+    athletes = ['heart_A', 'spade_A', 'club_A', 'diamond_A']
+
+    def __len__(self):
+        return len(self.athletes)
+
+    def __getitem__(self, position):
+        return self.athletes[position]
