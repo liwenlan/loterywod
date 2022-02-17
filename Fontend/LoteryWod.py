@@ -6,23 +6,25 @@ from collections import Counter
 from Card import AthleteDeck, WodDeck
 
 def setGroupNum(person, team):
-    teamSplit = team
     group = 0
+    # 1-5人 X组
+    # 6-8、10人 2组
+    # 11-15、9人 3组
+    # 16-24人 4组
     if person < 6:
         group = person
     elif person < 10:
         group = 2
     elif person < 16:
         group = 3
-    else:
+    elif person <= 24:
         group = 4
     if person == 9:
         group = 3
 
     for i in range(group):
-        teamSplit[i] = 1
+        team[i] = 1
 
-    print('teamSplit', teamSplit)
     return group
 
 # def randomCards():
