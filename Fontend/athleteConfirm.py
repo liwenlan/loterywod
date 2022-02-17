@@ -22,6 +22,7 @@ class Confirm_Ui_Dialog(QtWidgets.QMainWindow):
         self.teamConfirm = team
         self.setupUi(self)
         self.retranslateUi(self)
+        self.athleteNum = 0
 
     def setupUi(self, Dialog):
         Dialog.setObjectName("Confirm")
@@ -63,8 +64,8 @@ class Confirm_Ui_Dialog(QtWidgets.QMainWindow):
         self.switch_window_groupSplit.emit(self.teamConfirm)
 
     def confirmGroup(self):
-        athleteNum = int(self.lineEdit.text())
-        setGroupNum(athleteNum, self.teamConfirm)
+        self.athleteNum = int(self.lineEdit.text())
+        setGroupNum(self.athleteNum, self.teamConfirm)
 
 
 if __name__ == '__main__':

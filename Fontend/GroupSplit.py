@@ -114,10 +114,10 @@ class Group_Ui_Dialog(QtWidgets.QMainWindow):
         pic = QtGui.QPixmap(picPath).scaled(self.label.width(), self.label.height())
         self.label.setPixmap(pic)
 
-        self.label_2.setText(_translate("Dialog", "A"))
-        self.label_3.setText(_translate("Dialog", "B"))
-        self.label_4.setText(_translate("Dialog", "C"))
-        self.label_5.setText(_translate("Dialog", "D"))
+        self.label_2.setText(_translate("Dialog", "红桃"))
+        self.label_3.setText(_translate("Dialog", "黑桃"))
+        self.label_4.setText(_translate("Dialog", "方片"))
+        self.label_5.setText(_translate("Dialog", "草花"))
         self.label_6.setText(_translate("Dialog", "E"))
         self.textBrowser_7.setHtml(_translate("Dialog", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
@@ -135,7 +135,12 @@ class Group_Ui_Dialog(QtWidgets.QMainWindow):
     def goAthleteConfirm(self):
         self.switch_window_AthleteConfirm.emit()
 
+    # def
+
     def pickCard(self):
+        print(self.lineEdit.text())
+        person = 9
+        team = setTeamNum(person)
         luckyDog = selectAthlete()
         picPath = '../Resources/PokerPictures/' + luckyDog + '.jpg'
         pic = QtGui.QPixmap(picPath).scaled(self.label.width(), self.label.height())
