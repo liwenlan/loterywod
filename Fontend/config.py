@@ -148,7 +148,7 @@ class Config_Ui_Dialog(QtWidgets.QMainWindow):
         diamond = self.lineEdit_4.text()
         bonus = self.lineEdit_5.text()
         self.actionConfig.update({'heart': heart, 'spade': spade, 'club': club, 'diamond': diamond, 'bonus': bonus})
-        print(self.actionConfig)
+
         CardA = self.checkBox.text()
         Card2 = self.checkBox_2.text()
         Card3 = self.checkBox_3.text()
@@ -169,8 +169,10 @@ class Config_Ui_Dialog(QtWidgets.QMainWindow):
         #       CardJ, CardQ, CardK)
 
     def setWodConfig(self):
-        # 暂未实现
-        a = 1
+        pass
+
+    def setAction(self, heart, spade, club, diamond, bonus):
+        pass
 
     def goAthleteConfirm(self):
         self.switch_window.emit()

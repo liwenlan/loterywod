@@ -5,7 +5,8 @@ from sys import argv
 from collections import Counter
 from Card import AthleteDeck, WodDeck
 
-def setGroupNum(person):
+def setGroupNum(person, team):
+    teamSplit = team
     group = 0
     if person < 6:
         group = person
@@ -18,15 +19,10 @@ def setGroupNum(person):
     if person == 9:
         group = 3
 
-    configFile = "input"
-    main_wd = os.getcwd()
-    with open('{}/{}.json'.format(main_wd, configFile), mode='r', errors='ignore') as json_file:
-        settings = json.load(json_file)
-
     for i in range(group):
-        settings['team'][i] = 'True'
+        teamSplit[i] = 1
 
-    print('loterywod', group)
+    print('teamSplit', teamSplit)
     return group
 
 # def randomCards():

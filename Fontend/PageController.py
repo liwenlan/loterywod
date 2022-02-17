@@ -33,7 +33,7 @@ class Controller:
         self.config.show()
 
     def show_athleteConfirm(self):
-        self.athleteConfirm = Confirm_Ui_Dialog()
+        self.athleteConfirm = Confirm_Ui_Dialog(self.team)
         self.athleteConfirm.switch_window_rules.connect(self.show_rules)
         self.athleteConfirm.switch_window_groupSplit.connect(self.show_groupSplit)
         self.config.close()
@@ -44,15 +44,15 @@ class Controller:
         #self.config.close()
         self.rules.show()
 
-    def show_groupSplit(self):
-        self.groupSplit = Group_Ui_Dialog()
+    def show_groupSplit(self, teamConfirmValue):
+        self.groupSplit = Group_Ui_Dialog(teamConfirmValue)
         self.groupSplit.switch_window_WodLoop.connect(self.show_wodLoop)
         self.groupSplit.switch_window_AthleteConfirm.connect(self.show_athleteConfirm)
         self.athleteConfirm.close()
         self.groupSplit.show()
 
-    def show_wodLoop(self):
-        self.wodLoop = WodLoop_Ui_Dialog()
+    def show_wodLoop(self, teamConfirmValue):
+        self.wodLoop = WodLoop_Ui_Dialog(teamConfirmValue)
         self.groupSplit.close()
         self.wodLoop.show()
 

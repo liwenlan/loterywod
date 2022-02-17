@@ -14,11 +14,12 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 
 
 class Group_Ui_Dialog(QtWidgets.QMainWindow):
-    switch_window_WodLoop = QtCore.pyqtSignal()
+    switch_window_WodLoop = QtCore.pyqtSignal(object)
     switch_window_AthleteConfirm = QtCore.pyqtSignal()
 
-    def __init__(self):
+    def __init__(self, team):
         super(Group_Ui_Dialog, self).__init__()
+        self.teamConfigValue = team
         self.setupUi(self)
         self.retranslateUi(self)
 
@@ -28,37 +29,52 @@ class Group_Ui_Dialog(QtWidgets.QMainWindow):
         self.label = QtWidgets.QLabel(Dialog)
         self.label.setGeometry(QtCore.QRect(290, 40, 101, 141))
         self.label.setObjectName("label")
+
         self.label_2 = QtWidgets.QLabel(Dialog)
         self.label_2.setGeometry(QtCore.QRect(20, 40, 31, 31))
         self.label_2.setObjectName("label_2")
-        self.label_3 = QtWidgets.QLabel(Dialog)
-        self.label_3.setGeometry(QtCore.QRect(20, 90, 31, 31))
-        self.label_3.setObjectName("label_3")
-        self.label_4 = QtWidgets.QLabel(Dialog)
-        self.label_4.setGeometry(QtCore.QRect(20, 140, 31, 31))
-        self.label_4.setObjectName("label_4")
-        self.label_5 = QtWidgets.QLabel(Dialog)
-        self.label_5.setGeometry(QtCore.QRect(20, 190, 31, 31))
-        self.label_5.setObjectName("label_5")
-        self.label_6 = QtWidgets.QLabel(Dialog)
-        self.label_6.setGeometry(QtCore.QRect(20, 240, 31, 31))
-        self.label_6.setObjectName("label_6")
-
         self.textBrowser_2 = QtWidgets.QTextBrowser(Dialog)
         self.textBrowser_2.setGeometry(QtCore.QRect(50, 40, 171, 31))
         self.textBrowser_2.setObjectName("textBrowser_2")
+        self.label_2.setVisible(bool(self.teamConfigValue[0]))
+        self.textBrowser_2.setVisible(bool(self.teamConfigValue[0]))
+
+        self.label_3 = QtWidgets.QLabel(Dialog)
+        self.label_3.setGeometry(QtCore.QRect(20, 90, 31, 31))
+        self.label_3.setObjectName("label_3")
         self.textBrowser_3 = QtWidgets.QTextBrowser(Dialog)
         self.textBrowser_3.setGeometry(QtCore.QRect(50, 90, 171, 31))
         self.textBrowser_3.setObjectName("textBrowser_3")
+        self.label_3.setVisible(bool(self.teamConfigValue[1]))
+        self.textBrowser_3.setVisible(bool(self.teamConfigValue[1]))
+
+        self.label_4 = QtWidgets.QLabel(Dialog)
+        self.label_4.setGeometry(QtCore.QRect(20, 140, 31, 31))
+        self.label_4.setObjectName("label_4")
         self.textBrowser_4 = QtWidgets.QTextBrowser(Dialog)
         self.textBrowser_4.setGeometry(QtCore.QRect(50, 140, 171, 31))
         self.textBrowser_4.setObjectName("textBrowser_4")
+        self.label_4.setVisible(bool(self.teamConfigValue[2]))
+        self.textBrowser_4.setVisible(bool(self.teamConfigValue[2]))
+
+        self.label_5 = QtWidgets.QLabel(Dialog)
+        self.label_5.setGeometry(QtCore.QRect(20, 190, 31, 31))
+        self.label_5.setObjectName("label_5")
         self.textBrowser_5 = QtWidgets.QTextBrowser(Dialog)
         self.textBrowser_5.setGeometry(QtCore.QRect(50, 190, 171, 31))
         self.textBrowser_5.setObjectName("textBrowser_5")
+        self.label_5.setVisible(bool(self.teamConfigValue[3]))
+        self.textBrowser_5.setVisible(bool(self.teamConfigValue[3]))
+
+        self.label_6 = QtWidgets.QLabel(Dialog)
+        self.label_6.setGeometry(QtCore.QRect(20, 240, 31, 31))
+        self.label_6.setObjectName("label_6")
         self.textBrowser_6 = QtWidgets.QTextBrowser(Dialog)
         self.textBrowser_6.setGeometry(QtCore.QRect(50, 240, 171, 31))
         self.textBrowser_6.setObjectName("textBrowser_6")
+        self.label_6.setVisible(bool(self.teamConfigValue[4]))
+        self.textBrowser_6.setVisible(bool(self.teamConfigValue[4]))
+
         self.textBrowser_7 = QtWidgets.QTextBrowser(Dialog)
         self.textBrowser_7.setGeometry(QtCore.QRect(190, 6, 81, 31))
         self.textBrowser_7.setObjectName("textBrowser_7")
@@ -114,7 +130,7 @@ class Group_Ui_Dialog(QtWidgets.QMainWindow):
         self.pushButton_4.setText(_translate("Dialog", "重开一局"))
 
     def goWodLoop(self):
-        self.switch_window_WodLoop.emit()
+        self.switch_window_WodLoop.emit(self.teamConfigValue)
 
     def goAthleteConfirm(self):
         self.switch_window_AthleteConfirm.emit()
