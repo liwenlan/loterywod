@@ -58,13 +58,13 @@ class Config_Ui_Dialog(QtWidgets.QMainWindow):
         self.checkBox_4.setGeometry(QtCore.QRect(310, 170, 41, 20))
         self.checkBox_4.setObjectName("checkBox_4")
         self.checkBox_5 = QtWidgets.QCheckBox(Dialog)
-        self.checkBox_5.setGeometry(QtCore.QRect(350, 150, 41, 20))
+        self.checkBox_5.setGeometry(QtCore.QRect(350, 110, 41, 20))
         self.checkBox_5.setObjectName("checkBox_5")
         self.checkBox_6 = QtWidgets.QCheckBox(Dialog)
         self.checkBox_6.setGeometry(QtCore.QRect(350, 130, 31, 20))
         self.checkBox_6.setObjectName("checkBox_6")
         self.checkBox_7 = QtWidgets.QCheckBox(Dialog)
-        self.checkBox_7.setGeometry(QtCore.QRect(350, 110, 31, 20))
+        self.checkBox_7.setGeometry(QtCore.QRect(350, 150, 31, 20))
         self.checkBox_7.setObjectName("checkBox_7")
         self.checkBox_8 = QtWidgets.QCheckBox(Dialog)
         self.checkBox_8.setGeometry(QtCore.QRect(350, 170, 41, 20))
@@ -73,13 +73,13 @@ class Config_Ui_Dialog(QtWidgets.QMainWindow):
         self.checkBox_9.setGeometry(QtCore.QRect(390, 110, 31, 20))
         self.checkBox_9.setObjectName("checkBox_9")
         self.checkBox_10 = QtWidgets.QCheckBox(Dialog)
-        self.checkBox_10.setGeometry(QtCore.QRect(390, 170, 41, 20))
+        self.checkBox_10.setGeometry(QtCore.QRect(390, 130, 41, 20))
         self.checkBox_10.setObjectName("checkBox_10")
         self.checkBox_11 = QtWidgets.QCheckBox(Dialog)
         self.checkBox_11.setGeometry(QtCore.QRect(390, 150, 41, 20))
         self.checkBox_11.setObjectName("checkBox_11")
         self.checkBox_12 = QtWidgets.QCheckBox(Dialog)
-        self.checkBox_12.setGeometry(QtCore.QRect(390, 130, 41, 20))
+        self.checkBox_12.setGeometry(QtCore.QRect(390, 170, 41, 20))
         self.checkBox_12.setObjectName("checkBox_12")
         self.checkBox_13 = QtWidgets.QCheckBox(Dialog)
         self.checkBox_13.setGeometry(QtCore.QRect(430, 110, 41, 20))
@@ -125,14 +125,14 @@ class Config_Ui_Dialog(QtWidgets.QMainWindow):
         self.checkBox_2.setText(_translate("Dialog", "2"))
         self.checkBox_3.setText(_translate("Dialog", "3"))
         self.checkBox_4.setText(_translate("Dialog", "4"))
-        self.checkBox_5.setText(_translate("Dialog", "7"))
+        self.checkBox_5.setText(_translate("Dialog", "5"))
         self.checkBox_6.setText(_translate("Dialog", "6"))
-        self.checkBox_7.setText(_translate("Dialog", "5"))
+        self.checkBox_7.setText(_translate("Dialog", "7"))
         self.checkBox_8.setText(_translate("Dialog", "8"))
         self.checkBox_9.setText(_translate("Dialog", "9"))
-        self.checkBox_10.setText(_translate("Dialog", "Q"))
+        self.checkBox_10.setText(_translate("Dialog", "10"))
         self.checkBox_11.setText(_translate("Dialog", "J"))
-        self.checkBox_12.setText(_translate("Dialog", "10"))
+        self.checkBox_12.setText(_translate("Dialog", "Q"))
         self.checkBox_13.setText(_translate("Dialog", "K"))
         self.pushButton.setText(_translate("Dialog", "确认"))
         self.lineEdit.setPlaceholderText(_translate("Dialog", "请输入红桃的动作"))
@@ -143,6 +143,7 @@ class Config_Ui_Dialog(QtWidgets.QMainWindow):
 
     def collectConfigration(self):
         heart = self.lineEdit.text()
+        print("heart: ", heart)
         spade = self.lineEdit_2.text()
         club = self.lineEdit_3.text()
         diamond = self.lineEdit_4.text()
@@ -163,10 +164,30 @@ class Config_Ui_Dialog(QtWidgets.QMainWindow):
         CardQ = self.checkBox_12.text()
         CardK = self.checkBox_13.text()
 
-        # print(heart, spade, club, diamond, bonus,
-        #       CardA, Card2, Card3, Card4, Card5,
-        #       Card6, Card7, Card8, Card9, Card10,
-        #       CardJ, CardQ, CardK)
+        stateA = self.checkBox.checkState()
+        state2 = self.checkBox_2.checkState()
+        state3 = self.checkBox_3.checkState()
+        state4 = self.checkBox_4.checkState()
+        state5 = self.checkBox_5.checkState()
+        state6 = self.checkBox_6.checkState()
+        state7 = self.checkBox_7.checkState()
+        state8 = self.checkBox_8.checkState()
+        state9 = self.checkBox_9.checkState()
+        state10 = self.checkBox_10.checkState()
+        stateJ = self.checkBox_11.checkState()
+        stateQ = self.checkBox_12.checkState()
+        stateK = self.checkBox_13.checkState()
+
+        BcardList = [stateA, state2, state3, state4, state5, state6, state7, state8, state9, state10,
+              stateJ, stateQ, stateK]
+        print("heart, spade, club, diamond, bonus")
+        print(heart, spade, club, diamond, bonus,
+              CardA, Card2, Card3, Card4, Card5,
+              Card6, Card7, Card8, Card9, Card10,
+              CardJ, CardQ, CardK)
+        print("[A, 2, 3, 4, 5, 6, 7, 8, 9, 10, J, Q, K]")
+        print(BcardList)
+        print("--------------------")
 
     def setWodConfig(self):
         pass
