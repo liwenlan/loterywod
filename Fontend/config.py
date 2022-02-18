@@ -20,6 +20,7 @@ class Config_Ui_Dialog(QtWidgets.QMainWindow):
         self.actionConfig = action
         self.setupUi(self)
         self.retranslateUi(self)
+        self.BcardList = []  # 记录被勾选的Bcard
 
     def setupUi(self, Dialog):
         Dialog.setObjectName("Config")
@@ -90,6 +91,7 @@ class Config_Ui_Dialog(QtWidgets.QMainWindow):
         self.pushButton.setObjectName("enterConfig")
         self.pushButton.clicked.connect(self.goAthleteConfirm)
         self.pushButton.clicked.connect(self.collectConfigration)
+        self.pushButton.clicked.connect(self.getBcardState)
 
         self.lineEdit = QtWidgets.QLineEdit(Dialog)
         self.lineEdit.setGeometry(QtCore.QRect(90, 60, 113, 21))
@@ -150,20 +152,16 @@ class Config_Ui_Dialog(QtWidgets.QMainWindow):
         bonus = self.lineEdit_5.text()
         self.actionConfig.update({'heart': heart, 'spade': spade, 'club': club, 'diamond': diamond, 'bonus': bonus})
 
-        CardA = self.checkBox.text()
-        Card2 = self.checkBox_2.text()
-        Card3 = self.checkBox_3.text()
-        Card4 = self.checkBox_4.text()
-        Card5 = self.checkBox_5.text()
-        Card6 = self.checkBox_6.text()
-        Card7 = self.checkBox_7.text()
-        Card8 = self.checkBox_8.text()
-        Card9 = self.checkBox_9.text()
-        Card10 = self.checkBox_10.text()
-        CardJ = self.checkBox_11.text()
-        CardQ = self.checkBox_12.text()
-        CardK = self.checkBox_13.text()
+    def setWodConfig(self):
+        pass
 
+    def setAction(self, heart, spade, club, diamond, bonus):
+        pass
+
+    def goAthleteConfirm(self):
+        self.switch_window.emit()
+
+    def getBcardState(self):
         stateA = self.checkBox.checkState()
         state2 = self.checkBox_2.checkState()
         state3 = self.checkBox_3.checkState()
@@ -177,23 +175,17 @@ class Config_Ui_Dialog(QtWidgets.QMainWindow):
         stateJ = self.checkBox_11.checkState()
         stateQ = self.checkBox_12.checkState()
         stateK = self.checkBox_13.checkState()
-
-        BcardList = [stateA, state2, state3, state4, state5, state6, state7, state8, state9, state10,
-              stateJ, stateQ, stateK]
-        print("heart, spade, club, diamond, bonus")
-        print(heart, spade, club, diamond, bonus,
-              CardA, Card2, Card3, Card4, Card5,
-              Card6, Card7, Card8, Card9, Card10,
-              CardJ, CardQ, CardK)
-        print("[A, 2, 3, 4, 5, 6, 7, 8, 9, 10, J, Q, K]")
-        print(BcardList)
-        print("--------------------")
-
-    def setWodConfig(self):
-        pass
-
-    def setAction(self, heart, spade, club, diamond, bonus):
-        pass
-
-    def goAthleteConfirm(self):
-        self.switch_window.emit()
+        Bcard = [stateA, state2, state3, state4, state5, state6, state7, state8, state9, state10, stateJ, stateQ,
+                     stateK]
+        for index in range(len(Bcard)):
+            if Bcard[index] == 2:
+                if index == 0:
+                    self.BcardList.append('A')
+                elif index == 10:
+                    self.BcardList.append('J')
+                elif index == 11:
+                    self.BcardList.append('Q')
+                elif index == 12:
+                    self.BcardList.append('K')
+                else:
+                    self.BcardList.append(str(index + 1))
