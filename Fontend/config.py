@@ -20,6 +20,7 @@ class Config_Ui_Dialog(QtWidgets.QMainWindow):
         self.actionConfig = action
         self.setupUi(self)
         self.retranslateUi(self)
+        self.suit = []  # 记录不同花色对应的动作以及炸弹动作
         self.BcardList = []  # 记录被勾选的Bcard
 
     def setupUi(self, Dialog):
@@ -145,11 +146,11 @@ class Config_Ui_Dialog(QtWidgets.QMainWindow):
 
     def collectConfigration(self):
         heart = self.lineEdit.text()
-        print("heart: ", heart)
         spade = self.lineEdit_2.text()
         club = self.lineEdit_3.text()
         diamond = self.lineEdit_4.text()
         bonus = self.lineEdit_5.text()
+        self.suit = [heart, spade, club, diamond, bonus]
         self.actionConfig.update({'heart': heart, 'spade': spade, 'club': club, 'diamond': diamond, 'bonus': bonus})
 
     def setWodConfig(self):

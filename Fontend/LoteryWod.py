@@ -94,6 +94,16 @@ def playB(group):  # 分组
 def playC(person):
     pass
 
+def bindActionByCard(card, suit, BcardList):
+    """
+    绑定每一次抽到的牌和动作
+    :param card: 每一次抽到的牌
+    :param suit: list， 不同花色对应的动作
+    :param BcardList: 对应炸弹的card
+    :return: 对应的动作
+    """
+
+
 if __name__ == '__main__':
     # cards = ['A', 'B', 'C', 'D'] * 13
     configFile = "input"
@@ -110,5 +120,3 @@ if __name__ == '__main__':
         playB(group)
     else:
         playC(group)
-    
-    print("--------")
