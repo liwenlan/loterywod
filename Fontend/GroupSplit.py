@@ -17,9 +17,11 @@ class Group_Ui_Dialog(QtWidgets.QMainWindow):
     switch_window_WodLoop = QtCore.pyqtSignal(object)
     switch_window_AthleteConfirm = QtCore.pyqtSignal()
 
-    def __init__(self, team):
+    def __init__(self, team, group):
         super(Group_Ui_Dialog, self).__init__()
         self.teamConfigValue = team
+        self.group = group
+        self.groupTemp = group
         self.setupUi(self)
         self.retranslateUi(self)
 
@@ -81,7 +83,10 @@ class Group_Ui_Dialog(QtWidgets.QMainWindow):
         self.pushButton = QtWidgets.QPushButton(Dialog)
         self.pushButton.setGeometry(QtCore.QRect(350, 196, 113, 41))
         self.pushButton.setObjectName("pushButton_enter")
-        self.pushButton.clicked.connect(self.pickCard)
+        if self.group < 5:
+            self.pushButton.clicked.connect(self.pickCard)
+        else:
+            self.pushButton.clicked.connect(self.setEveryName)
 
         self.pushButton_2 = QtWidgets.QPushButton(Dialog)
         self.pushButton_2.setGeometry(QtCore.QRect(412, 10, 61, 41))
@@ -113,12 +118,16 @@ class Group_Ui_Dialog(QtWidgets.QMainWindow):
         print(picPath)
         pic = QtGui.QPixmap(picPath).scaled(self.label.width(), self.label.height())
         self.label.setPixmap(pic)
-
-        self.label_2.setText(_translate("Dialog", "红桃"))
-        self.label_3.setText(_translate("Dialog", "黑桃"))
-        self.label_4.setText(_translate("Dialog", "方片"))
-        self.label_5.setText(_translate("Dialog", "草花"))
-        self.label_6.setText(_translate("Dialog", "E"))
+        groupName = []
+        if self.group == 5:
+            groupName = ['A', 'B', 'C', 'D', 'E']
+        else:
+            groupName = ['红桃', '黑桃', '草花', '方片', 'null']
+        self.label_2.setText(_translate("Dialog", groupName[0]))
+        self.label_3.setText(_translate("Dialog", groupName[1]))
+        self.label_4.setText(_translate("Dialog", groupName[2]))
+        self.label_5.setText(_translate("Dialog", groupName[3]))
+        self.label_6.setText(_translate("Dialog", groupName[4]))
         self.textBrowser_7.setHtml(_translate("Dialog", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
@@ -135,18 +144,80 @@ class Group_Ui_Dialog(QtWidgets.QMainWindow):
     def goAthleteConfirm(self):
         self.switch_window_AthleteConfirm.emit()
 
-    # def
+    def cardBindTeam(self):
+        card = AthleteDeck()
+
 
     def pickCard(self):
-        print(self.lineEdit.text())
-        person = 9
-        team = setTeamNum(person)
+        athleteName = self.lineEdit.text()
         luckyDog = selectAthlete()
         picPath = '../Resources/PokerPictures/' + luckyDog + '.jpg'
         pic = QtGui.QPixmap(picPath).scaled(self.label.width(), self.label.height())
         self.label.setPixmap(pic)
         self.label.setScaledContents(True)
+
+        if luckyDog == 'heart_A':
+            heartText = self.textBrowser_2.toPlainText()
+            heartText = heartText + ' ' + athleteName
+            self.textBrowser_2.setText(heartText)
+
+        if luckyDog == 'spade_A':
+            heartText = self.textBrowser_3.toPlainText()
+            heartText = heartText + ' ' + athleteName
+            self.textBrowser_3.setText(heartText)
+
+        if luckyDog == 'club_A':
+            heartText = self.textBrowser_4.toPlainText()
+            heartText = heartText + ' ' + athleteName
+            self.textBrowser_4.setText(heartText)
+
+        if luckyDog == 'diamond_A':
+            heartText = self.textBrowser_5.toPlainText()
+            heartText = heartText + ' ' + athleteName
+            self.textBrowser_5.setText(heartText)
+
+
+
+
+
+
         #self.label.setText(picPath)
+
+    def setEveryName(self):
+        athleteName = self.lineEdit.text()
+
+        if self.groupTemp == 5:
+            heartText = self.textBrowser_2.toPlainText()
+            heartText = heartText + ' ' + athleteName
+            self.textBrowser_2.setText(heartText)
+
+        if self.groupTemp == 4:
+            heartText = self.textBrowser_3.toPlainText()
+            heartText = heartText + ' ' + athleteName
+            self.textBrowser_3.setText(heartText)
+
+        if self.groupTemp == 3:
+            heartText = self.textBrowser_4.toPlainText()
+            heartText = heartText + ' ' + athleteName
+            self.textBrowser_4.setText(heartText)
+
+        if self.groupTemp == 2:
+            heartText = self.textBrowser_5.toPlainText()
+            heartText = heartText + ' ' + athleteName
+            self.textBrowser_5.setText(heartText)
+
+        if self.groupTemp == 1:
+            heartText = self.textBrowser_6.toPlainText()
+            heartText = heartText + ' ' + athleteName
+            self.textBrowser_6.setText(heartText)
+
+        self.groupTemp = self.groupTemp - 1
+
+
+
+
+        #self.label.setText(picPath)
+
 
 
 

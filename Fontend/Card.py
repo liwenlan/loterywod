@@ -40,3 +40,7 @@ class AthleteDeck:
 
     def __getitem__(self, position):
         return self.athletes[position]
+
+    def remove(self, card):
+        print("card", card)
+        self.athletes.remove(card)

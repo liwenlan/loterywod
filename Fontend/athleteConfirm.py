@@ -11,15 +11,17 @@ import sys
 from PyQt5 import QtCore, QtGui, QtWidgets
 from LoteryWod import *
 from input import *
+from Card import *
 
 
 class Confirm_Ui_Dialog(QtWidgets.QMainWindow):
     switch_window_rules = QtCore.pyqtSignal()
-    switch_window_groupSplit = QtCore.pyqtSignal(object)
+    switch_window_groupSplit = QtCore.pyqtSignal(object, object)
 
     def __init__(self, team):
         super(Confirm_Ui_Dialog, self).__init__()
         self.teamConfirm = team
+        self.group = 0
         self.setupUi(self)
         self.retranslateUi(self)
         self.athleteNum = 0
@@ -61,11 +63,25 @@ class Confirm_Ui_Dialog(QtWidgets.QMainWindow):
 
     def goGroupSplit(self):
         self.confirmGroup()
-        self.switch_window_groupSplit.emit(self.teamConfirm)
+        self.switch_window_groupSplit.emit(self.teamConfirm, self.group)
 
     def confirmGroup(self):
         self.athleteNum = int(self.lineEdit.text())
-        setGroupNum(self.athleteNum, self.teamConfirm)
+        self.group = setGroupNum(self.athleteNum, self.teamConfirm)
+        teamDeckTemp = AthleteDeck()
+
+        if self.group == 3:
+            teamDeckTemp.remove('diamond_A')
+        elif self.group == 2:
+            teamDeckTemp.remove('diamond_A')
+            teamDeckTemp.remove('club_A')
+        elif self.group == 1:
+            teamDeckTemp.remove('diamond_A')
+            teamDeckTemp.remove('club_A')
+            teamDeckTemp.remove('heart_A')
+
+        print(teamDeckTemp.athletes)
+
 
 
 if __name__ == '__main__':
