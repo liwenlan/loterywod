@@ -146,7 +146,7 @@ class WodLoop_Ui_Dialog(QtWidgets.QMainWindow):
         self.label_8.setText(_translate("Dialog", "分数"))
         self.label_9.setText(_translate("Dialog", "分数"))
         self.label_10.setText(_translate("Dialog", "分数"))
-        #self.label_11.setText(_translate("Dialog", "TextLabel"))
+        # self.label_11.setText(_translate("Dialog", "TextLabel"))
 
         picPath = '../Resources/PokerPictures/pokerBack.jpg'
         print(picPath)
@@ -158,10 +158,13 @@ class WodLoop_Ui_Dialog(QtWidgets.QMainWindow):
 
     def pickWod(self):
         luckyWod = selectWod()
+        print("lucky wod is ", luckyWod)
+
         picPath = '../Resources/PokerPictures/' + luckyWod + '.jpg'
         pic = QtGui.QPixmap(picPath)
         self.label_11.setPixmap(pic)
         self.label_11.setScaledContents(True)
+        return luckyWod
 
 
 

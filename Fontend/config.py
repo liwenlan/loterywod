@@ -94,6 +94,7 @@ class Config_Ui_Dialog(QtWidgets.QMainWindow):
         self.pushButton.clicked.connect(self.collectConfigration)
         self.pushButton.clicked.connect(self.getBcardState)
 
+
         self.lineEdit = QtWidgets.QLineEdit(Dialog)
         self.lineEdit.setGeometry(QtCore.QRect(90, 60, 113, 21))
         self.lineEdit.setObjectName("lineEdit_heart")
@@ -152,6 +153,8 @@ class Config_Ui_Dialog(QtWidgets.QMainWindow):
         bonus = self.lineEdit_5.text()
         self.suit = [heart, spade, club, diamond, bonus]
         self.actionConfig.update({'heart': heart, 'spade': spade, 'club': club, 'diamond': diamond, 'bonus': bonus})
+        print("suit is ", self.suit)
+        print("actions is ", self.actionConfig)
 
     def setWodConfig(self):
         pass
@@ -163,6 +166,10 @@ class Config_Ui_Dialog(QtWidgets.QMainWindow):
         self.switch_window.emit()
 
     def getBcardState(self):
+        """
+        获取Bcard中勾选的选项
+        :return: Bcard中勾选的选项
+        """
         stateA = self.checkBox.checkState()
         state2 = self.checkBox_2.checkState()
         state3 = self.checkBox_3.checkState()
@@ -190,3 +197,6 @@ class Config_Ui_Dialog(QtWidgets.QMainWindow):
                     self.BcardList.append('K')
                 else:
                     self.BcardList.append(str(index + 1))
+
+        print("BcardList is ", self.BcardList)
+

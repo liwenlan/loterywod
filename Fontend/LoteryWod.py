@@ -94,18 +94,25 @@ def playB(group):  # 分组
 def playC(person):
     pass
 
-def bindActionByCard(card, suit, BcardList):
+def bindActionByCard(card, BcardList, actionConfig):
     """
     绑定每一次抽到的牌和动作
-    :param card: 每一次抽到的牌
-    :param suit: list， 不同花色对应的动作
+    :param card: 每一次抽到的牌{花色， 数字}
     :param BcardList: 对应炸弹的card
     :return: 对应的动作
     """
+    if card[1] in BcardList:
+        return actionConfig['bonus']
+    else:
+        return actionConfig[card[0]]
 
 
 if __name__ == '__main__':
-    # cards = ['A', 'B', 'C', 'D'] * 13
+    suit = ['jump', 'b', 'c', 'd', '3']
+    actions = {'heart': 'jump', 'spade': 'swing', 'club': 'squat', 'diamond': 'row', 'bonus': 'berpee'}
+    BcardList = ['A', '2', '3', '4']
+    action = bindActionByCard(['club', '8'], suit, BcardList, actions)
+    print("action is ", action)
     configFile = "input"
     main_wd = os.getcwd()
     with open('{}/{}.json'.format(main_wd, configFile), mode='r', errors='ignore') as json_file:
