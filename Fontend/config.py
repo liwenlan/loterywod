@@ -162,7 +162,7 @@ class Config_Ui_Dialog(QtWidgets.QMainWindow):
         pass
 
     def goAthleteConfirm(self):
-        self.switch_window.emit(self.suit, self.BcardList)
+        self.switch_window.emit(self.actionConfig, self.BcardList)
 
     def getBcardState(self):
         """

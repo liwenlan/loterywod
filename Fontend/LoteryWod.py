@@ -101,6 +101,10 @@ def bindActionByCard(card, BcardList, actionConfig):
     :param BcardList: 对应炸弹的card
     :return: 对应的动作
     """
+    print("BcardList is ", BcardList)
+    print("actionConfig is ", actionConfig)
+    card = card.split('_')
+    print("card is ", card)
     if card[1] in BcardList:
         return actionConfig['bonus']
     else:
