@@ -20,6 +20,8 @@ class Controller:
         self.groupSplit = None
         self.action = input.actionConfig
         self.team = input.team
+        self.confirmSuit = None
+        self.confirmBcardList = None
 
     def show_start(self):
         self.start = Start_Ui_Dialog()
@@ -32,7 +34,9 @@ class Controller:
         self.start.close()
         self.config.show()
 
-    def show_athleteConfirm(self):
+    def show_athleteConfirm(self, suit, BcardList):
+        self.confirmBcardList = BcardList
+        self.confirmSuit = suit
         self.athleteConfirm = Confirm_Ui_Dialog(self.team)
         self.athleteConfirm.switch_window_rules.connect(self.show_rules)
         self.athleteConfirm.switch_window_groupSplit.connect(self.show_groupSplit)
@@ -52,7 +56,7 @@ class Controller:
         self.groupSplit.show()
 
     def show_wodLoop(self, teamConfirmValue, teamName, group):
-        self.wodLoop = WodLoop_Ui_Dialog(teamConfirmValue, teamName, group)
+        self.wodLoop = WodLoop_Ui_Dialog(teamConfirmValue, teamName, group, self.confirmSuit, self.confirmBcardList)
         self.groupSplit.close()
         self.wodLoop.show()
 

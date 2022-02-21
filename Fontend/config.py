@@ -13,7 +13,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 
 
 class Config_Ui_Dialog(QtWidgets.QMainWindow):
-    switch_window = QtCore.pyqtSignal()
+    switch_window = QtCore.pyqtSignal(object, object)
 
     def __init__(self, action):
         super(Config_Ui_Dialog, self).__init__()
@@ -90,10 +90,9 @@ class Config_Ui_Dialog(QtWidgets.QMainWindow):
         self.pushButton = QtWidgets.QPushButton(Dialog)
         self.pushButton.setGeometry(QtCore.QRect(310, 210, 121, 51))
         self.pushButton.setObjectName("enterConfig")
-        self.pushButton.clicked.connect(self.goAthleteConfirm)
         self.pushButton.clicked.connect(self.collectConfigration)
         self.pushButton.clicked.connect(self.getBcardState)
-
+        self.pushButton.clicked.connect(self.goAthleteConfirm)
 
         self.lineEdit = QtWidgets.QLineEdit(Dialog)
         self.lineEdit.setGeometry(QtCore.QRect(90, 60, 113, 21))
@@ -163,7 +162,7 @@ class Config_Ui_Dialog(QtWidgets.QMainWindow):
         pass
 
     def goAthleteConfirm(self):
-        self.switch_window.emit()
+        self.switch_window.emit(self.suit, self.BcardList)
 
     def getBcardState(self):
         """

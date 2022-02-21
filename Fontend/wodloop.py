@@ -14,10 +14,12 @@ from LoteryWod import *
 
 class WodLoop_Ui_Dialog(QtWidgets.QMainWindow):
 
-    def __init__(self, team, teamName, group):
+    def __init__(self, team, teamName, group, confirmSuit, confirmBcardList):
         super(WodLoop_Ui_Dialog, self).__init__()
         self.teamConfigValue = team
         self.teamNameConfig = teamName
+        self.confirmSuit = confirmSuit
+        self.confirmBcardList = confirmBcardList
         self.group = group
         self.setupUi(self)
         self.retranslateUi(self)
@@ -170,7 +172,6 @@ class WodLoop_Ui_Dialog(QtWidgets.QMainWindow):
     def pickWod(self):
         luckyWod = selectWod()
         print("lucky wod is ", luckyWod)
-
         picPath = '../Resources/PokerPictures/' + luckyWod + '.jpg'
         pic = QtGui.QPixmap(picPath)
         self.label_11.setPixmap(pic)
