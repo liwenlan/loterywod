@@ -39,8 +39,10 @@ class Start_Ui_Dialog(QtWidgets.QMainWindow):
         Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
         self.pushButton.setText(_translate("Dialog", "配置动作库"))
         self.pushButton.clicked.connect(self.goConfig)
-        jpg = QtGui.QPixmap(r'../Resources/web.png').scaled(self.label.width(), self.label.height())
+        jpg = QtGui.QPixmap(r'../Resources/crossfit.jpeg').scaled(self.label.width(), self.label.height())
         self.label.setPixmap(jpg)
+        self.label.setScaledContents(True)
+
         # self.label.setText(_translate("Dialog", "TextLabel"))
 
     def goConfig(self):

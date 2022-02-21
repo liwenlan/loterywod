@@ -47,14 +47,15 @@ class Confirm_Ui_Dialog(QtWidgets.QMainWindow):
         self.pushButton_2.setObjectName("pushButton_2")
         self.pushButton_2.clicked.connect(self.goRules)
 
-
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
 
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
-        self.label.setText(_translate("Dialog", "TextLabel"))
+        jpg = QtGui.QPixmap(r'../Resources/lottery.jpeg').scaled(self.label.width(), self.label.height())
+        self.label.setPixmap(jpg)
+        self.label.setScaledContents(True)
         self.lineEdit.setPlaceholderText(_translate("Dialog", "请输入人数"))
         self.pushButton.setText(_translate("Dialog", "确认"))
         self.pushButton_2.setText(_translate("Dialog", "规则说明"))

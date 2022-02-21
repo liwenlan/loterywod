@@ -17,6 +17,11 @@ class Config_Ui_Dialog(QtWidgets.QMainWindow):
 
     def __init__(self, action):
         super(Config_Ui_Dialog, self).__init__()
+        self.bonus = None
+        self.diamond = None
+        self.club = None
+        self.spade = None
+        self.heart = None
         self.actionConfig = action
         self.setupUi(self)
         self.retranslateUi(self)
@@ -90,9 +95,7 @@ class Config_Ui_Dialog(QtWidgets.QMainWindow):
         self.pushButton = QtWidgets.QPushButton(Dialog)
         self.pushButton.setGeometry(QtCore.QRect(310, 210, 121, 51))
         self.pushButton.setObjectName("enterConfig")
-        self.pushButton.clicked.connect(self.collectConfigration)
-        self.pushButton.clicked.connect(self.getBcardState)
-        self.pushButton.clicked.connect(self.goAthleteConfirm)
+        self.pushButton.clicked.connect(self.configConfirm)
 
         self.lineEdit = QtWidgets.QLineEdit(Dialog)
         self.lineEdit.setGeometry(QtCore.QRect(90, 60, 113, 21))
@@ -144,16 +147,25 @@ class Config_Ui_Dialog(QtWidgets.QMainWindow):
         self.lineEdit_4.setPlaceholderText(_translate("Dialog", "请输入方片的动作"))
         self.lineEdit_5.setPlaceholderText(_translate("Dialog", "请输入彩蛋的动作"))
 
+    def configConfirm(self):
+        self.collectConfigration()
+        if self.heart == '' or self.spade == '' or self.club == '' or self.diamond == '' or self.bonus == '':
+            print("jinlaile")
+            QtWidgets.QMessageBox.information(self, '提示', '好像还没有填完呢')
+        else:
+            self.getBcardState()
+            self.goAthleteConfirm()
+
     def collectConfigration(self):
-        heart = self.lineEdit.text()
-        spade = self.lineEdit_2.text()
-        club = self.lineEdit_3.text()
-        diamond = self.lineEdit_4.text()
-        bonus = self.lineEdit_5.text()
-        self.suit = [heart, spade, club, diamond, bonus]
-        self.actionConfig.update({'heart': heart, 'spade': spade, 'club': club, 'diamond': diamond, 'bonus': bonus})
-        print("suit is ", self.suit)
-        print("actions is ", self.actionConfig)
+        self.heart = self.lineEdit.text()
+        self.spade = self.lineEdit_2.text()
+        self.club = self.lineEdit_3.text()
+        self.diamond = self.lineEdit_4.text()
+        self.bonus = self.lineEdit_5.text()
+        self.suit = [self.heart, self.spade, self.club, self.diamond, self.bonus]
+        self.actionConfig.update(
+            {'heart': self.heart, 'spade': self.spade, 'club': self.club, 'diamond': self.diamond,
+             'bonus': self.bonus})
 
     def setWodConfig(self):
         pass
@@ -183,7 +195,7 @@ class Config_Ui_Dialog(QtWidgets.QMainWindow):
         stateQ = self.checkBox_12.checkState()
         stateK = self.checkBox_13.checkState()
         Bcard = [stateA, state2, state3, state4, state5, state6, state7, state8, state9, state10, stateJ, stateQ,
-                     stateK]
+                 stateK]
         for index in range(len(Bcard)):
             if Bcard[index] == 2:
                 if index == 0:
@@ -198,4 +210,3 @@ class Config_Ui_Dialog(QtWidgets.QMainWindow):
                     self.BcardList.append(str(index + 1))
 
         print("BcardList is ", self.BcardList)
-
