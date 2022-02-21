@@ -11,11 +11,14 @@ import sys
 from PyQt5 import QtCore, QtGui, QtWidgets
 from LoteryWod import *
 
+
 class WodLoop_Ui_Dialog(QtWidgets.QMainWindow):
 
-    def __init__(self, team):
+    def __init__(self, team, teamName, group):
         super(WodLoop_Ui_Dialog, self).__init__()
         self.teamConfigValue = team
+        self.teamNameConfig = teamName
+        self.group = group
         self.setupUi(self)
         self.retranslateUi(self)
 
@@ -130,11 +133,18 @@ class WodLoop_Ui_Dialog(QtWidgets.QMainWindow):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
         self.pushButton_2.setText(_translate("Dialog", "重开一局"))
-        self.label_2.setText(_translate("Dialog", "A"))
-        self.label_3.setText(_translate("Dialog", "B"))
-        self.label_4.setText(_translate("Dialog", "C"))
-        self.label_5.setText(_translate("Dialog", "D"))
-        self.label_6.setText(_translate("Dialog", "E"))
+
+        if self.group == 5:
+            groupName = ['A', 'B', 'C', 'D', 'E']
+        else:
+            groupName = ['红桃', '黑桃', '草花', '方片', 'null']
+
+        self.label_2.setText(_translate("Dialog", groupName[0]))
+        self.label_3.setText(_translate("Dialog", groupName[1]))
+        self.label_4.setText(_translate("Dialog", groupName[2]))
+        self.label_5.setText(_translate("Dialog", groupName[3]))
+        self.label_6.setText(_translate("Dialog", groupName[4]))
+
         self.textBrowser_7.setHtml(_translate("Dialog",
                                               "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
                                               "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
@@ -155,6 +165,7 @@ class WodLoop_Ui_Dialog(QtWidgets.QMainWindow):
         self.label_11.setScaledContents(True)
 
         self.pushButton.setText(_translate("Dialog", "抽取一个wod"))
+        self.setEveryTeamName()
 
     def pickWod(self):
         luckyWod = selectWod()
@@ -166,5 +177,9 @@ class WodLoop_Ui_Dialog(QtWidgets.QMainWindow):
         self.label_11.setScaledContents(True)
         return luckyWod
 
-
-
+    def setEveryTeamName(self):
+        self.textBrowser_2.setText(self.teamNameConfig[0])
+        self.textBrowser_3.setText(self.teamNameConfig[1])
+        self.textBrowser_4.setText(self.teamNameConfig[2])
+        self.textBrowser_5.setText(self.teamNameConfig[3])
+        self.textBrowser_6.setText(self.teamNameConfig[4])

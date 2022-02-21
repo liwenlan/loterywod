@@ -16,11 +16,12 @@ from Card import *
 
 class Confirm_Ui_Dialog(QtWidgets.QMainWindow):
     switch_window_rules = QtCore.pyqtSignal()
-    switch_window_groupSplit = QtCore.pyqtSignal(object, object)
+    switch_window_groupSplit = QtCore.pyqtSignal(object, object, object)
 
     def __init__(self, team):
         super(Confirm_Ui_Dialog, self).__init__()
         self.teamConfirm = team
+        self.teamAthleteList = []
         self.group = 0
         self.setupUi(self)
         self.retranslateUi(self)
@@ -63,10 +64,12 @@ class Confirm_Ui_Dialog(QtWidgets.QMainWindow):
 
     def goGroupSplit(self):
         self.confirmGroup()
-        self.switch_window_groupSplit.emit(self.teamConfirm, self.group)
+        print(self.teamAthleteList)
+        self.switch_window_groupSplit.emit(self.teamConfirm, self.group, self.teamAthleteList)
 
     def confirmGroup(self):
         self.athleteNum = int(self.lineEdit.text())
+        self.teamAthleteList = setTeamNum(self.athleteNum)
         self.group = setGroupNum(self.athleteNum, self.teamConfirm)
         teamDeckTemp = AthleteDeck()
 
@@ -81,7 +84,6 @@ class Confirm_Ui_Dialog(QtWidgets.QMainWindow):
             teamDeckTemp.remove('heart_A')
 
         print(teamDeckTemp.athletes)
-
 
 
 if __name__ == '__main__':

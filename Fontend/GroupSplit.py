@@ -13,15 +13,32 @@ from LoteryWod import *
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
+def cardUpdateDeck(removeCard):
+    athleteDeck = AthleteDeck()
+    athleteDeck.remove(removeCard)
+    print(athleteDeck)
+
+
 class Group_Ui_Dialog(QtWidgets.QMainWindow):
-    switch_window_WodLoop = QtCore.pyqtSignal(object)
+    switch_window_WodLoop = QtCore.pyqtSignal(object, object, object)
     switch_window_AthleteConfirm = QtCore.pyqtSignal()
 
-    def __init__(self, team, group):
+    def __init__(self, team, group, teamEveryNum):
         super(Group_Ui_Dialog, self).__init__()
         self.teamConfigValue = team
         self.group = group
         self.groupTemp = group
+        self.teamEveryNum = teamEveryNum
+        # self.heartAthleteNum = teamEveryNum[0]
+        # self.spadeAthleteNum = teamEveryNum[1]
+        # self.clubAthleteNum = teamEveryNum[2]
+        # self.diamondAthleteNum = teamEveryNum[3]
+        # self.AAthleteNum = teamEveryNum[0]
+        # self.BAthleteNum = teamEveryNum[1]
+        # self.CAthleteNum = teamEveryNum[2]
+        # self.DAthleteNum = teamEveryNum[3]
+        # self.EAthleteNum = teamEveryNum[4]
+        self.teamNameConfig = ['', '', '', '', '']
         self.setupUi(self)
         self.retranslateUi(self)
 
@@ -83,6 +100,7 @@ class Group_Ui_Dialog(QtWidgets.QMainWindow):
         self.pushButton = QtWidgets.QPushButton(Dialog)
         self.pushButton.setGeometry(QtCore.QRect(350, 196, 113, 41))
         self.pushButton.setObjectName("pushButton_enter")
+
         if self.group < 5:
             self.pushButton.clicked.connect(self.pickCard)
         else:
@@ -113,111 +131,131 @@ class Group_Ui_Dialog(QtWidgets.QMainWindow):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
 
-        #self.label.setText(_translate("Dialog", "cardRegion"))
+        # self.label.setText(_translate("Dialog", "cardRegion"))
         picPath = '../Resources/PokerPictures/pokerBack.jpg'
         print(picPath)
         pic = QtGui.QPixmap(picPath).scaled(self.label.width(), self.label.height())
         self.label.setPixmap(pic)
+        # 根据分组不同设置每队的名字
         groupName = []
         if self.group == 5:
             groupName = ['A', 'B', 'C', 'D', 'E']
         else:
             groupName = ['红桃', '黑桃', '草花', '方片', 'null']
+
         self.label_2.setText(_translate("Dialog", groupName[0]))
         self.label_3.setText(_translate("Dialog", groupName[1]))
         self.label_4.setText(_translate("Dialog", groupName[2]))
         self.label_5.setText(_translate("Dialog", groupName[3]))
         self.label_6.setText(_translate("Dialog", groupName[4]))
-        self.textBrowser_7.setHtml(_translate("Dialog", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'.AppleSystemUIFont\'; font-size:13pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">抽 签 分 组</p></body></html>"))
+        self.textBrowser_7.setHtml(_translate("Dialog",
+                                              "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+                                              "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+                                              "p, li { white-space: pre-wrap; }\n"
+                                              "</style></head><body style=\" font-family:\'.AppleSystemUIFont\'; font-size:13pt; font-weight:400; font-style:normal;\">\n"
+                                              "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">抽 签 分 组</p></body></html>"))
         self.pushButton.setText(_translate("Dialog", "确认"))
         self.pushButton_2.setText(_translate("Dialog", "返回"))
         self.pushButton_3.setText(_translate("Dialog", "开始wod"))
         self.pushButton_4.setText(_translate("Dialog", "重开一局"))
 
     def goWodLoop(self):
-        self.switch_window_WodLoop.emit(self.teamConfigValue)
+        if (self.teamEveryNum[0] + self.teamEveryNum[1] + self.teamEveryNum[2] + self.teamEveryNum[3] + self.teamEveryNum[4]) != 0:
+            QtWidgets.QMessageBox.information(self, '提示', '还有人没有找到队伍呢')
+        else:
+            self.configEveryTeamName()
+            self.switch_window_WodLoop.emit(self.teamConfigValue, self.teamNameConfig, self.group)
 
     def goAthleteConfirm(self):
         self.switch_window_AthleteConfirm.emit()
 
-    def cardBindTeam(self):
-        card = AthleteDeck()
-
-
     def pickCard(self):
-        athleteName = self.lineEdit.text()
-        luckyDog = selectAthlete()
-        picPath = '../Resources/PokerPictures/' + luckyDog + '.jpg'
-        pic = QtGui.QPixmap(picPath).scaled(self.label.width(), self.label.height())
-        self.label.setPixmap(pic)
-        self.label.setScaledContents(True)
+        if (self.teamEveryNum[0] + self.teamEveryNum[1] + self.teamEveryNum[2] + self.teamEveryNum[3]) == 0:
+            QtWidgets.QMessageBox.information(self, '提示', '人满了开始WOD吧')
+        else:
+            athleteName = self.lineEdit.text()
+            luckyDog = selectAthlete()
+            picPath = '../Resources/PokerPictures/' + luckyDog + '.jpg'
+            pic = QtGui.QPixmap(picPath).scaled(self.label.width(), self.label.height())
+            self.label.setPixmap(pic)
+            self.label.setScaledContents(True)
 
-        if luckyDog == 'heart_A':
-            heartText = self.textBrowser_2.toPlainText()
-            heartText = heartText + ' ' + athleteName
-            self.textBrowser_2.setText(heartText)
+            if luckyDog == 'heart_A':
+                print('ok')
+                heartText = self.textBrowser_2.toPlainText()
+                heartText = heartText + ' ' + athleteName
+                self.textBrowser_2.setText(heartText)
+                self.updateCurrentTeam(0, luckyDog)
 
-        if luckyDog == 'spade_A':
-            heartText = self.textBrowser_3.toPlainText()
-            heartText = heartText + ' ' + athleteName
-            self.textBrowser_3.setText(heartText)
+            if luckyDog == 'spade_A':
+                heartText = self.textBrowser_3.toPlainText()
+                heartText = heartText + ' ' + athleteName
+                self.textBrowser_3.setText(heartText)
+                self.updateCurrentTeam(1, luckyDog)
 
-        if luckyDog == 'club_A':
-            heartText = self.textBrowser_4.toPlainText()
-            heartText = heartText + ' ' + athleteName
-            self.textBrowser_4.setText(heartText)
+            if luckyDog == 'club_A':
+                heartText = self.textBrowser_4.toPlainText()
+                heartText = heartText + ' ' + athleteName
+                self.textBrowser_4.setText(heartText)
+                self.updateCurrentTeam(2, luckyDog)
 
-        if luckyDog == 'diamond_A':
-            heartText = self.textBrowser_5.toPlainText()
-            heartText = heartText + ' ' + athleteName
-            self.textBrowser_5.setText(heartText)
-
-
-
-
-
-
-        #self.label.setText(picPath)
+            if luckyDog == 'diamond_A':
+                heartText = self.textBrowser_5.toPlainText()
+                heartText = heartText + ' ' + athleteName
+                self.textBrowser_5.setText(heartText)
+                self.updateCurrentTeam(3, luckyDog)
+            #每次输入后清空输入框
+            self.lineEdit.clear()
 
     def setEveryName(self):
-        athleteName = self.lineEdit.text()
+        if self.groupTemp == 0:
+            QtWidgets.QMessageBox.information(self, '提示', '人满了开始WOD吧')
+        else:
+            athleteName = self.lineEdit.text()
 
-        if self.groupTemp == 5:
-            heartText = self.textBrowser_2.toPlainText()
-            heartText = heartText + ' ' + athleteName
-            self.textBrowser_2.setText(heartText)
+            if self.groupTemp == 5:
+                heartText = self.textBrowser_2.toPlainText()
+                heartText = heartText + ' ' + athleteName
+                self.textBrowser_2.setText(heartText)
+                self.updateCurrentTeam(0, '')
 
-        if self.groupTemp == 4:
-            heartText = self.textBrowser_3.toPlainText()
-            heartText = heartText + ' ' + athleteName
-            self.textBrowser_3.setText(heartText)
+            if self.groupTemp == 4:
+                heartText = self.textBrowser_3.toPlainText()
+                heartText = heartText + ' ' + athleteName
+                self.textBrowser_3.setText(heartText)
+                self.updateCurrentTeam(1, '')
 
-        if self.groupTemp == 3:
-            heartText = self.textBrowser_4.toPlainText()
-            heartText = heartText + ' ' + athleteName
-            self.textBrowser_4.setText(heartText)
+            if self.groupTemp == 3:
+                heartText = self.textBrowser_4.toPlainText()
+                heartText = heartText + ' ' + athleteName
+                self.textBrowser_4.setText(heartText)
+                self.updateCurrentTeam(2, '')
 
-        if self.groupTemp == 2:
-            heartText = self.textBrowser_5.toPlainText()
-            heartText = heartText + ' ' + athleteName
-            self.textBrowser_5.setText(heartText)
+            if self.groupTemp == 2:
+                heartText = self.textBrowser_5.toPlainText()
+                heartText = heartText + ' ' + athleteName
+                self.textBrowser_5.setText(heartText)
+                self.updateCurrentTeam(3, '')
 
-        if self.groupTemp == 1:
-            heartText = self.textBrowser_6.toPlainText()
-            heartText = heartText + ' ' + athleteName
-            self.textBrowser_6.setText(heartText)
+            if self.groupTemp == 1:
+                heartText = self.textBrowser_6.toPlainText()
+                heartText = heartText + ' ' + athleteName
+                self.textBrowser_6.setText(heartText)
+                self.updateCurrentTeam(4, '')
 
-        self.groupTemp = self.groupTemp - 1
+            self.groupTemp = self.groupTemp - 1
 
+            #每次输入后清空输入框
+            self.lineEdit.clear()
 
+    def configEveryTeamName(self):
+        self.teamNameConfig[0] = self.textBrowser_2.toPlainText()
+        self.teamNameConfig[1] = self.textBrowser_3.toPlainText()
+        self.teamNameConfig[2] = self.textBrowser_4.toPlainText()
+        self.teamNameConfig[3] = self.textBrowser_5.toPlainText()
+        self.teamNameConfig[4] = self.textBrowser_6.toPlainText()
 
-
-        #self.label.setText(picPath)
-
-
-
-
+    def updateCurrentTeam(self, pos, luckyDog):
+        self.teamEveryNum[pos] -= 1
+        if self.teamEveryNum[pos] == 0 and luckyDog != '':
+            cardUpdateDeck(luckyDog)
