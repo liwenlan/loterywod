@@ -29,13 +29,17 @@ class WodLoop_Ui_Dialog(QtWidgets.QMainWindow):
         Dialog.resize(482, 300)
 
         self.pushButton = QtWidgets.QPushButton(Dialog)
-        self.pushButton.setGeometry(QtCore.QRect(350, 230, 111, 41))
+        self.pushButton.setGeometry(QtCore.QRect(350, 230, 121, 41))
         self.pushButton.setObjectName("pushButton")
         self.pushButton.clicked.connect(self.pickWod)
 
         self.pushButton_2 = QtWidgets.QPushButton(Dialog)
         self.pushButton_2.setGeometry(QtCore.QRect(382, 7, 91, 41))
         self.pushButton_2.setObjectName("pushButton_2")
+
+        self.textBrowser = QtWidgets.QTextBrowser(Dialog)
+        self.textBrowser.setGeometry(QtCore.QRect(360, 200, 101, 31))
+        self.textBrowser.setObjectName("textBrowser")
 
         self.label_2 = QtWidgets.QLabel(Dialog)
         self.label_2.setGeometry(QtCore.QRect(20, 40, 31, 31))
@@ -126,7 +130,7 @@ class WodLoop_Ui_Dialog(QtWidgets.QMainWindow):
         self.textBrowser_7.setGeometry(QtCore.QRect(190, 6, 121, 31))
         self.textBrowser_7.setObjectName("textBrowser_7")
         self.label_11 = QtWidgets.QLabel(Dialog)
-        self.label_11.setGeometry(QtCore.QRect(360, 60, 91, 141))
+        self.label_11.setGeometry(QtCore.QRect(360, 50, 101, 141))
         self.label_11.setObjectName("label_11")
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
