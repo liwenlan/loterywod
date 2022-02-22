@@ -11,6 +11,7 @@ import sys
 from PyQt5 import QtCore, QtGui, QtWidgets
 from config import *
 from inputConfig import *
+import ui
 
 class Start_Ui_Dialog(QtWidgets.QMainWindow):
 
@@ -39,7 +40,7 @@ class Start_Ui_Dialog(QtWidgets.QMainWindow):
         Dialog.setWindowTitle(_translate("Dialog", "彩票机"))
         self.pushButton.setText(_translate("Dialog", "配置动作库"))
         self.pushButton.clicked.connect(self.goConfig)
-        jpg = QtGui.QPixmap(r'../Resources/crossfit.jpeg').scaled(self.label.width(), self.label.height())
+        jpg = QtGui.QPixmap(":/Resources/crossfit.jpeg").scaled(self.label.width(), self.label.height())
         self.label.setPixmap(jpg)
         self.label.setScaledContents(True)
 
