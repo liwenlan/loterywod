@@ -62,6 +62,7 @@ class Controller:
 
 def main():
     input = Input()
+    QtWidgets.QApplication.setAttribute(QtCore.Qt.AA_EnableHighDpiScaling, True)
     app = QtWidgets.QApplication(sys.argv)
     controller = Controller(input)
     controller.show_start()
