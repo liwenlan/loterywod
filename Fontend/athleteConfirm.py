@@ -9,6 +9,7 @@
 
 import sys
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtGui import QMovie
 from LoteryWod import *
 from input import *
 from Card import *
@@ -31,7 +32,7 @@ class Confirm_Ui_Dialog(QtWidgets.QMainWindow):
         Dialog.setObjectName("Confirm")
         Dialog.resize(482, 300)
         self.label = QtWidgets.QLabel(Dialog)
-        self.label.setGeometry(QtCore.QRect(120, 40, 231, 121))
+        self.label.setGeometry(QtCore.QRect(120, 60, 261, 141))
         self.label.setObjectName("label")
         self.lineEdit = QtWidgets.QLineEdit(Dialog)
         self.lineEdit.setGeometry(QtCore.QRect(120, 213, 141, 31))
@@ -53,9 +54,12 @@ class Confirm_Ui_Dialog(QtWidgets.QMainWindow):
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "彩票机"))
-        jpg = QtGui.QPixmap(r'../Resources/lottery.jpeg').scaled(self.label.width(), self.label.height())
-        self.label.setPixmap(jpg)
+        # jpg = QtGui.QPixmap(r'../Resources/lottery.jpeg').scaled(self.label.width(), self.label.height())
+        # self.label.setPixmap(jpg)
         self.label.setScaledContents(True)
+        gif = QMovie(r'../Resources/lottery.gif')
+        self.label.setMovie(gif)
+        gif.start()
         self.lineEdit.setPlaceholderText(_translate("Dialog", "请输入人数"))
         self.pushButton.setText(_translate("Dialog", "确认"))
         self.pushButton_2.setText(_translate("Dialog", "规则说明"))
