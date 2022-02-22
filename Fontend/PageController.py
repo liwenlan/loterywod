@@ -45,7 +45,7 @@ class Controller:
 
     def show_rules(self):
         self.rules = Rules_Ui_Dialog()
-        #self.config.close()
+        # self.config.close()
         self.rules.show()
 
     def show_groupSplit(self, teamConfirmValue, group, teamEveryNum):

@@ -25,7 +25,7 @@ class WodLoop_Ui_Dialog(QtWidgets.QMainWindow):
         self.retranslateUi(self)
 
     def setupUi(self, Dialog):
-        Dialog.setObjectName("Dialog")
+        Dialog.setObjectName("彩票机")
         Dialog.resize(482, 300)
 
         self.pushButton = QtWidgets.QPushButton(Dialog)
@@ -137,7 +137,7 @@ class WodLoop_Ui_Dialog(QtWidgets.QMainWindow):
 
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
-        Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
+        Dialog.setWindowTitle(_translate("Dialog", "彩票机"))
         self.pushButton_2.setText(_translate("Dialog", "重开一局"))
 
         if self.group == 5:
@@ -156,7 +156,7 @@ class WodLoop_Ui_Dialog(QtWidgets.QMainWindow):
                                               "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
                                               "p, li { white-space: pre-wrap; }\n"
                                               "</style></head><body style=\" font-family:\'.AppleSystemUIFont\'; font-size:13pt; font-weight:400; font-style:normal;\">\n"
-                                              "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:14pt;\">LotteryWod</span></p></body></html>"))
+                                              "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:14pt;\">开始Wod</span></p></body></html>"))
         self.label.setText(_translate("Dialog", "分数"))
         self.label_7.setText(_translate("Dialog", "分数"))
         self.label_8.setText(_translate("Dialog", "分数"))

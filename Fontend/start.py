@@ -36,7 +36,7 @@ class Start_Ui_Dialog(QtWidgets.QMainWindow):
 
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
-        Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
+        Dialog.setWindowTitle(_translate("Dialog", "彩票机"))
         self.pushButton.setText(_translate("Dialog", "配置动作库"))
         self.pushButton.clicked.connect(self.goConfig)
         jpg = QtGui.QPixmap(r'../Resources/crossfit.jpeg').scaled(self.label.width(), self.label.height())

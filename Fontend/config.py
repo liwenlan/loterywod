@@ -118,14 +118,14 @@ class Config_Ui_Dialog(QtWidgets.QMainWindow):
 
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
-        Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
+        Dialog.setWindowTitle(_translate("Dialog", "彩票机"))
         self.label.setText(_translate("Dialog",
                                       "<html><head/><body><p><span style=\" font-size:18pt;\">动作库配置</span></p></body></html>"))
-        self.label_2.setText(_translate("Dialog", "heart"))
-        self.label_3.setText(_translate("Dialog", "spade"))
-        self.label_4.setText(_translate("Dialog", "club"))
-        self.label_5.setText(_translate("Dialog", "diamond"))
-        self.label_6.setText(_translate("Dialog", "bonus"))
+        self.label_2.setText(_translate("Dialog", "红桃"))
+        self.label_3.setText(_translate("Dialog", "黑桃"))
+        self.label_4.setText(_translate("Dialog", "草花"))
+        self.label_5.setText(_translate("Dialog", "方片"))
+        self.label_6.setText(_translate("Dialog", "💣"))
         self.label_7.setText(_translate("Dialog", "Bcard"))
         self.checkBox.setText(_translate("Dialog", "A"))
         self.checkBox_2.setText(_translate("Dialog", "2"))
@@ -150,7 +150,6 @@ class Config_Ui_Dialog(QtWidgets.QMainWindow):
     def configConfirm(self):
         self.collectConfigration()
         if self.heart == '' or self.spade == '' or self.club == '' or self.diamond == '' or self.bonus == '':
-            print("jinlaile")
             QtWidgets.QMessageBox.information(self, '提示', '好像还没有填完呢')
         else:
             self.getBcardState()

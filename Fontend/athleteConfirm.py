@@ -52,7 +52,7 @@ class Confirm_Ui_Dialog(QtWidgets.QMainWindow):
 
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
-        Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
+        Dialog.setWindowTitle(_translate("Dialog", "彩票机"))
         jpg = QtGui.QPixmap(r'../Resources/lottery.jpeg').scaled(self.label.width(), self.label.height())
         self.label.setPixmap(jpg)
         self.label.setScaledContents(True)
