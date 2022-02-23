@@ -171,10 +171,12 @@ class Group_Ui_Dialog(QtWidgets.QMainWindow):
         self.switch_window_AthleteConfirm.emit()
 
     def pickCard(self):
+        athleteName = self.lineEdit.text()
         if (self.teamEveryNum[0] + self.teamEveryNum[1] + self.teamEveryNum[2] + self.teamEveryNum[3]) == 0:
             QtWidgets.QMessageBox.information(self, '提示', '人满了开始WOD吧')
+        elif athleteName == '':
+                QtWidgets.QMessageBox.information(self, '提示', '你不能是无名氏哦')
         else:
-            athleteName = self.lineEdit.text()
             luckyDog = selectAthlete()
             picPath = ':/Resources/PokerPictures/' + luckyDog + '.jpg'
             pic = QtGui.QPixmap(picPath).scaled(self.label.width(), self.label.height())
@@ -182,7 +184,6 @@ class Group_Ui_Dialog(QtWidgets.QMainWindow):
             self.label.setScaledContents(True)
 
             if luckyDog == 'heart_A':
-                print('ok')
                 heartText = self.textBrowser_2.toPlainText()
                 heartText = heartText + ' ' + athleteName
                 self.textBrowser_2.setText(heartText)

@@ -28,6 +28,7 @@ class Confirm_Ui_Dialog(QtWidgets.QMainWindow):
         self.setupUi(self)
         self.retranslateUi(self)
         self.athleteNum = 0
+        self.tempAthleteNumstring = ''
 
     def setupUi(self, Dialog):
         Dialog.setObjectName("Confirm")
@@ -42,7 +43,7 @@ class Confirm_Ui_Dialog(QtWidgets.QMainWindow):
         self.pushButton.setGeometry(QtCore.QRect(280, 210, 113, 41))
         self.pushButton.setObjectName("pushButton")
         self.pushButton.clicked.connect(self.goGroupSplit)
-        #self.pushButton.clicked.connect(self.goGroupSplit)
+        # self.pushButton.clicked.connect(self.goGroupSplit)
 
         self.pushButton_2 = QtWidgets.QPushButton(Dialog)
         self.pushButton_2.setGeometry(QtCore.QRect(360, 10, 113, 41))
@@ -69,16 +70,19 @@ class Confirm_Ui_Dialog(QtWidgets.QMainWindow):
         self.switch_window_rules.emit()
 
     def goGroupSplit(self):
-        self.confirmGroup()
-        print(self.teamAthleteList)
-        self.switch_window_groupSplit.emit(self.teamConfirm, self.group, self.teamAthleteList)
+        self.tempAthleteNumstring = self.lineEdit.text()
+        if self.tempAthleteNumstring == '':
+            QtWidgets.QMessageBox.information(self, '提示', '一个人都没有呢')
+        else:
+            self.confirmGroup()
+            print(self.teamAthleteList)
+            self.switch_window_groupSplit.emit(self.teamConfirm, self.group, self.teamAthleteList)
 
     def confirmGroup(self):
         self.athleteNum = int(self.lineEdit.text())
         self.teamAthleteList = setTeamNum(self.athleteNum)
         self.group = setGroupNum(self.athleteNum, self.teamConfirm)
         teamDeckTemp = AthleteDeck()
-
         if self.group == 3:
             teamDeckTemp.remove('diamond_A')
         elif self.group == 2:
@@ -88,8 +92,6 @@ class Confirm_Ui_Dialog(QtWidgets.QMainWindow):
             teamDeckTemp.remove('diamond_A')
             teamDeckTemp.remove('club_A')
             teamDeckTemp.remove('heart_A')
-
-        print(teamDeckTemp.athletes)
 
 
 if __name__ == '__main__':
