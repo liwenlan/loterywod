@@ -48,7 +48,7 @@ class Controller:
         # self.config.close()
         self.rules.show()
 
-    def show_groupSplit(self, teamConfirmValue, group, teamEveryNum)
+    def show_groupSplit(self, teamConfirmValue, group, teamEveryNum):
         self.groupSplit = Group_Ui_Dialog(teamConfirmValue, group, teamEveryNum)
         self.groupSplit.switch_window_WodLoop.connect(self.show_wodLoop)
         self.groupSplit.switch_window_AthleteConfirm.connect(self.show_athleteConfirm)
