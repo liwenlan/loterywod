@@ -34,6 +34,7 @@ class Config_Ui_Dialog(QtWidgets.QMainWindow):
         Dialog.resize(478, 300)
         self.label = QtWidgets.QLabel(Dialog)
         self.label.setGeometry(QtCore.QRect(190, 10, 101, 31))
+        self.label.setAlignment(QtCore.Qt.AlignCenter)
         self.label.setObjectName("label")
         self.label_2 = QtWidgets.QLabel(Dialog)
         self.label_2.setGeometry(QtCore.QRect(30, 50, 51, 41))
@@ -120,8 +121,7 @@ class Config_Ui_Dialog(QtWidgets.QMainWindow):
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "彩票机"))
-        self.label.setText(_translate("Dialog",
-                                      "<html><head/><body><p><span style=\" font-size:18pt;\">动作库配置</span></p></body></html>"))
+        self.label.setText(_translate("Dialog", "动作库配置"))
         self.label_2.setText(_translate("Dialog", "红桃"))
         self.label_3.setText(_translate("Dialog", "黑桃"))
         self.label_4.setText(_translate("Dialog", "草花"))

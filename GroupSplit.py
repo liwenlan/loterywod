@@ -22,24 +22,18 @@ def cardUpdateDeck(removeCard):
 
 class Group_Ui_Dialog(QtWidgets.QMainWindow):
     switch_window_WodLoop = QtCore.pyqtSignal(object, object, object)
-    switch_window_AthleteConfirm = QtCore.pyqtSignal()
+    switch_window_AthleteConfirm = QtCore.pyqtSignal(object, object)
 
-    def __init__(self, team, group, teamEveryNum):
+    def __init__(self, team, group, teamEveryNum, confirmAction, confirmBcardList):
         super(Group_Ui_Dialog, self).__init__()
         self.teamConfigValue = team
         self.group = group
         self.groupTemp = group
         self.teamEveryNum = teamEveryNum
-        # self.heartAthleteNum = teamEveryNum[0]
-        # self.spadeAthleteNum = teamEveryNum[1]
-        # self.clubAthleteNum = teamEveryNum[2]
-        # self.diamondAthleteNum = teamEveryNum[3]
-        # self.AAthleteNum = teamEveryNum[0]
-        # self.BAthleteNum = teamEveryNum[1]
-        # self.CAthleteNum = teamEveryNum[2]
-        # self.DAthleteNum = teamEveryNum[3]
-        # self.EAthleteNum = teamEveryNum[4]
+        self.groupName = []
         self.teamNameConfig = ['', '', '', '', '']
+        self.confirmAction = confirmAction
+        self.confirmBcardList = confirmBcardList
         self.setupUi(self)
         self.retranslateUi(self)
 
@@ -95,9 +89,10 @@ class Group_Ui_Dialog(QtWidgets.QMainWindow):
         self.label_6.setVisible(bool(self.teamConfigValue[4]))
         self.textBrowser_6.setVisible(bool(self.teamConfigValue[4]))
 
-        self.textBrowser_7 = QtWidgets.QTextBrowser(Dialog)
-        self.textBrowser_7.setGeometry(QtCore.QRect(190, 6, 81, 31))
-        self.textBrowser_7.setObjectName("textBrowser_7")
+        self.label_7 = QtWidgets.QLabel(Dialog)
+        self.label_7.setGeometry(QtCore.QRect(190, 6, 81, 31))
+        self.label_7.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_7.setObjectName("label_7")
         self.pushButton = QtWidgets.QPushButton(Dialog)
         self.pushButton.setGeometry(QtCore.QRect(350, 196, 113, 41))
         self.pushButton.setObjectName("pushButton_enter")
@@ -130,7 +125,7 @@ class Group_Ui_Dialog(QtWidgets.QMainWindow):
 
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
-        Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
+        Dialog.setWindowTitle(_translate("Dialog", "彩票机"))
 
         # self.label.setText(_translate("Dialog", "cardRegion"))
         picPath = ":/Resources/PokerPictures/pokerBack.jpg"
@@ -138,27 +133,22 @@ class Group_Ui_Dialog(QtWidgets.QMainWindow):
         pic = QtGui.QPixmap(picPath).scaled(self.label.width(), self.label.height())
         self.label.setPixmap(pic)
         # 根据分组不同设置每队的名字
-        groupName = []
         if self.group == 5:
-            groupName = ['A', 'B', 'C', 'D', 'E']
+            self.groupName = ['A', 'B', 'C', 'D', 'E']
         else:
-            groupName = ['红桃', '黑桃', '草花', '方片', 'null']
+            self.groupName = ['红桃', '黑桃', '草花', '方片', 'null']
+        self.label_2.setText(_translate("Dialog", self.groupName[0]))
+        self.label_3.setText(_translate("Dialog", self.groupName[1]))
+        self.label_4.setText(_translate("Dialog", self.groupName[2]))
+        self.label_5.setText(_translate("Dialog", self.groupName[3]))
+        self.label_6.setText(_translate("Dialog", self.groupName[4]))
 
-        self.label_2.setText(_translate("Dialog", groupName[0]))
-        self.label_3.setText(_translate("Dialog", groupName[1]))
-        self.label_4.setText(_translate("Dialog", groupName[2]))
-        self.label_5.setText(_translate("Dialog", groupName[3]))
-        self.label_6.setText(_translate("Dialog", groupName[4]))
-        self.textBrowser_7.setHtml(_translate("Dialog",
-                                              "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-                                              "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-                                              "p, li { white-space: pre-wrap; }\n"
-                                              "</style></head><body style=\" font-family:\'.AppleSystemUIFont\'; font-size:13pt; font-weight:400; font-style:normal;\">\n"
-                                              "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">抽 签 分 组</p></body></html>"))
+        self.label_7.setText(_translate("Dialog", "抽签分组"))
         self.pushButton.setText(_translate("Dialog", "确认"))
         self.pushButton_2.setText(_translate("Dialog", "返回"))
         self.pushButton_3.setText(_translate("Dialog", "开始wod"))
         self.pushButton_4.setText(_translate("Dialog", "重开一局"))
+        self.lineEdit.setPlaceholderText(_translate("Dialog", "请输入名字"))
 
     def goWodLoop(self):
         if (self.teamEveryNum[0] + self.teamEveryNum[1] + self.teamEveryNum[2] + self.teamEveryNum[3] + self.teamEveryNum[4]) != 0:
@@ -168,14 +158,14 @@ class Group_Ui_Dialog(QtWidgets.QMainWindow):
             self.switch_window_WodLoop.emit(self.teamConfigValue, self.teamNameConfig, self.group)
 
     def goAthleteConfirm(self):
-        self.switch_window_AthleteConfirm.emit()
+        self.switch_window_AthleteConfirm.emit(self.confirmAction, self.confirmBcardList)
 
     def pickCard(self):
         athleteName = self.lineEdit.text()
         if (self.teamEveryNum[0] + self.teamEveryNum[1] + self.teamEveryNum[2] + self.teamEveryNum[3]) == 0:
             QtWidgets.QMessageBox.information(self, '提示', '人满了开始WOD吧')
         elif athleteName == '':
-                QtWidgets.QMessageBox.information(self, '提示', '你不能是无名氏哦')
+            QtWidgets.QMessageBox.information(self, '提示', '你不能是无名氏哦')
         else:
             luckyDog = selectAthlete()
             picPath = ':/Resources/PokerPictures/' + luckyDog + '.jpg'
@@ -206,7 +196,7 @@ class Group_Ui_Dialog(QtWidgets.QMainWindow):
                 heartText = heartText + ' ' + athleteName
                 self.textBrowser_5.setText(heartText)
                 self.updateCurrentTeam(3, luckyDog)
-            #每次输入后清空输入框
+            # 每次输入后清空输入框
             self.lineEdit.clear()
 
     def setEveryName(self):
@@ -247,7 +237,7 @@ class Group_Ui_Dialog(QtWidgets.QMainWindow):
 
             self.groupTemp = self.groupTemp - 1
 
-            #每次输入后清空输入框
+            # 每次输入后清空输入框
             self.lineEdit.clear()
 
     def configEveryTeamName(self):

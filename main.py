@@ -43,22 +43,23 @@ class Controller:
         self.config.close()
         self.athleteConfirm.show()
 
-    def show_rules(self):
-        self.rules = Rules_Ui_Dialog()
-        # self.config.close()
-        self.rules.show()
-
     def show_groupSplit(self, teamConfirmValue, group, teamEveryNum):
-        self.groupSplit = Group_Ui_Dialog(teamConfirmValue, group, teamEveryNum)
+        self.groupSplit = Group_Ui_Dialog(teamConfirmValue, group, teamEveryNum, self.confirmAction, self.confirmBcardList)
         self.groupSplit.switch_window_WodLoop.connect(self.show_wodLoop)
         self.groupSplit.switch_window_AthleteConfirm.connect(self.show_athleteConfirm)
         self.athleteConfirm.close()
         self.groupSplit.show()
 
+    def show_rules(self):
+        self.rules = Rules_Ui_Dialog()
+        # self.config.close()
+        self.rules.show()
+
     def show_wodLoop(self, teamConfirmValue, teamName, group):
         self.wodLoop = WodLoop_Ui_Dialog(teamConfirmValue, teamName, group, self.confirmAction, self.confirmBcardList)
         self.groupSplit.close()
         self.wodLoop.show()
+
 
 def main():
     input = Input()

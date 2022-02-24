@@ -56,8 +56,6 @@ class Confirm_Ui_Dialog(QtWidgets.QMainWindow):
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "彩票机"))
-        # jpg = QtGui.QPixmap(r'../Resources/lottery.jpeg').scaled(self.label.width(), self.label.height())
-        # self.label.setPixmap(jpg)
         self.label.setScaledContents(True)
         gif = QMovie(":/Resources/lottery.gif")
         self.label.setMovie(gif)
@@ -73,6 +71,10 @@ class Confirm_Ui_Dialog(QtWidgets.QMainWindow):
         self.tempAthleteNumstring = self.lineEdit.text()
         if self.tempAthleteNumstring == '':
             QtWidgets.QMessageBox.information(self, '提示', '一个人都没有呢')
+        elif int(self.tempAthleteNumstring) <= 0:
+            QtWidgets.QMessageBox.information(self, '提示', '可不能没人啊')
+        elif int(self.tempAthleteNumstring) > 24:
+            QtWidgets.QMessageBox.information(self, '提示', '人太多了，请包包扩容场地')
         else:
             self.confirmGroup()
             print(self.teamAthleteList)

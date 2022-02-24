@@ -21,6 +21,7 @@ class WodLoop_Ui_Dialog(QtWidgets.QMainWindow):
         self.teamNameConfig = teamName
         self.confirmAction = confirmAction
         self.confirmBcardList = confirmBcardList
+        self.groupName = []
         self.group = group
         self.setupUi(self)
         self.retranslateUi(self)
@@ -127,9 +128,9 @@ class WodLoop_Ui_Dialog(QtWidgets.QMainWindow):
         self.label_10.setVisible(bool(self.teamConfigValue[4]))
         self.spinBox_5.setVisible(bool(self.teamConfigValue[4]))
 
-        self.textBrowser_7 = QtWidgets.QTextBrowser(Dialog)
-        self.textBrowser_7.setGeometry(QtCore.QRect(190, 6, 121, 31))
-        self.textBrowser_7.setObjectName("textBrowser_7")
+        self.label_12 = QtWidgets.QLabel(Dialog)
+        self.label_12.setGeometry(QtCore.QRect(190, 6, 121, 31))
+        self.label_12.setObjectName("label_12")
         self.label_11 = QtWidgets.QLabel(Dialog)
         self.label_11.setGeometry(QtCore.QRect(360, 50, 101, 141))
         self.label_11.setObjectName("label_11")
@@ -142,22 +143,16 @@ class WodLoop_Ui_Dialog(QtWidgets.QMainWindow):
         self.pushButton_2.setText(_translate("Dialog", "重开一局"))
 
         if self.group == 5:
-            groupName = ['A', 'B', 'C', 'D', 'E']
+            self.groupName = ['A', 'B', 'C', 'D', 'E']
         else:
-            groupName = ['红桃', '黑桃', '草花', '方片', 'null']
+            self.groupName = ['红桃', '黑桃', '草花', '方片', 'null']
+        self.label_2.setText(_translate("Dialog", self.groupName[0]))
+        self.label_3.setText(_translate("Dialog", self.groupName[1]))
+        self.label_4.setText(_translate("Dialog", self.groupName[2]))
+        self.label_5.setText(_translate("Dialog", self.groupName[3]))
+        self.label_6.setText(_translate("Dialog", self.groupName[4]))
 
-        self.label_2.setText(_translate("Dialog", groupName[0]))
-        self.label_3.setText(_translate("Dialog", groupName[1]))
-        self.label_4.setText(_translate("Dialog", groupName[2]))
-        self.label_5.setText(_translate("Dialog", groupName[3]))
-        self.label_6.setText(_translate("Dialog", groupName[4]))
-
-        self.textBrowser_7.setHtml(_translate("Dialog",
-                                              "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-                                              "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-                                              "p, li { white-space: pre-wrap; }\n"
-                                              "</style></head><body style=\" font-family:\'.AppleSystemUIFont\'; font-size:13pt; font-weight:400; font-style:normal;\">\n"
-                                              "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:14pt;\">开始Wod</span></p></body></html>"))
+        self.label_12.setText(_translate("Dialog", "开始Wod"))
         self.label.setText(_translate("Dialog", "分数"))
         self.label_7.setText(_translate("Dialog", "分数"))
         self.label_8.setText(_translate("Dialog", "分数"))
