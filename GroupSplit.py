@@ -201,8 +201,11 @@ class Group_Ui_Dialog(QtWidgets.QMainWindow):
             self.lineEdit.clear()
 
     def setEveryName(self):
+        athleteName = self.lineEdit.text()
         if self.groupTemp == 0:
             QtWidgets.QMessageBox.information(self, '提示', '人满了开始WOD吧')
+        elif athleteName == '':
+            QtWidgets.QMessageBox.information(self, '提示', '你不能是无名氏哦')
         else:
             athleteName = self.lineEdit.text()
 
