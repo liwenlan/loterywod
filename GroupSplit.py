@@ -105,6 +105,7 @@ class Group_Ui_Dialog(QtWidgets.QMainWindow):
         self.pushButton_2 = QtWidgets.QPushButton(Dialog)
         self.pushButton_2.setGeometry(QtCore.QRect(412, 10, 61, 41))
         self.pushButton_2.setObjectName("pushButton_back")
+        self.pushButton_2.hide()
         self.pushButton_2.clicked.connect(self.goAthleteConfirm)
 
         self.pushButton_3 = QtWidgets.QPushButton(Dialog)

@@ -208,5 +208,3 @@ class Config_Ui_Dialog(QtWidgets.QMainWindow):
                     self.BcardList.append('K')
                 else:
                     self.BcardList.append(str(index + 1))
-
-        print("BcardList is ", self.BcardList)

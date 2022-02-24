@@ -55,5 +55,6 @@
         <file>Resources/PokerPictures/spade_Q.jpg</file>
         <file>Resources/PokerPictures/spade_K.jpg</file>
         <file>Resources/PokerPictures/pokerBack.jpg</file>
+        <file>Resources/ITF.jpg</file>
     </qresource>
 </RCC>

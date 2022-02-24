@@ -84,7 +84,9 @@ class Confirm_Ui_Dialog(QtWidgets.QMainWindow):
         self.athleteNum = int(self.lineEdit.text())
         self.teamAthleteList = setTeamNum(self.athleteNum)
         self.group = setGroupNum(self.athleteNum, self.teamConfirm)
+
         teamDeckTemp = AthleteDeck()
+        teamDeckTemp.init()
         if self.group == 3:
             teamDeckTemp.remove('diamond_A')
         elif self.group == 2:

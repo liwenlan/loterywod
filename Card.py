@@ -44,3 +44,6 @@ class AthleteDeck:
     def remove(self, card):
         print("card", card)
         self.athletes.remove(card)
+
+    def init(self):
+        athletes = ['heart_A', 'spade_A', 'club_A', 'diamond_A']
