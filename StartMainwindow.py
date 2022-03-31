@@ -9,9 +9,21 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtWidgets import QApplication, QMainWindow
+
+from WodloopMainwindow import Ui_WodLoopMainWindow
+from config import *
 
 
-class Ui_StartMainWindow(object):
+
+class Ui_StartMainWindow(QtWidgets.QMainWindow):
+    switch_window = QtCore.pyqtSignal()
+
+    def __init__(self):
+        super(Ui_StartMainWindow, self).__init__()
+        self.setupUi(self)
+        self.retranslateUi(self)
+
     def setupUi(self, StartMainWindow):
         StartMainWindow.setObjectName("StartMainWindow")
         StartMainWindow.resize(844, 567)
@@ -49,6 +61,8 @@ class Ui_StartMainWindow(object):
         self.pushButtonConfig.setObjectName("pushButtonConfig")
         self.verticalLayout.addWidget(self.pushButtonConfig)
         self.gridLayout.addLayout(self.verticalLayout, 1, 1, 1, 1)
+        self.pushButtonConfig.clicked.connect(self.goConfig)
+
         spacerItem1 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
         self.gridLayout.addItem(spacerItem1, 2, 1, 1, 2)
         spacerItem2 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
@@ -65,5 +79,14 @@ class Ui_StartMainWindow(object):
     def retranslateUi(self, StartMainWindow):
         _translate = QtCore.QCoreApplication.translate
         StartMainWindow.setWindowTitle(_translate("StartMainWindow", "MainWindow"))
-        self.labelConfigPicture.setText(_translate("StartMainWindow", "TextLabel"))
         self.pushButtonConfig.setText(_translate("StartMainWindow", "配置本次的动作"))
+
+        jpg = QtGui.QPixmap(":/Resources/crossfit.png").scaled(self.labelConfigPicture.width(), self.labelConfigPicture.height())
+        self.labelConfigPicture.setPixmap(jpg)
+        self.labelConfigPicture.setScaledContents(True)
+
+
+    def goConfig(self):
+        self.switch_window.emit()
+
+

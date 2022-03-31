@@ -43,6 +43,7 @@ class AthleteDeck:
 
     def remove(self, card):
         print("card", card)
+        print(self.athletes)
         self.athletes.remove(card)
 
     def init(self):

@@ -5,6 +5,12 @@ from athleteConfirm import *
 from rules import *
 from wodloop import *
 from GroupSplit import *
+from WodloopMainwindow import *
+from StartMainwindow import *
+from ConfigMainwindow import *
+from AthleteConfirmMainWindow import *
+from GroupSplitMainWindow import *
+
 import sys
 from PyQt5 import QtCore, QtWidgets
 
@@ -24,12 +30,12 @@ class Controller:
         self.confirmBcardList = None
 
     def show_start(self):
-        self.start = Start_Ui_Dialog()
+        self.start = Ui_StartMainWindow()
         self.start.switch_window.connect(self.show_config)
         self.start.show()
 
     def show_config(self):
-        self.config = Config_Ui_Dialog(self.action)
+        self.config = Ui_ConfigMainWindow(self.action)
         self.config.switch_window.connect(self.show_athleteConfirm)
         self.start.close()
         self.config.show()
@@ -37,15 +43,16 @@ class Controller:
     def show_athleteConfirm(self, actionConfig, BcardList):
         self.confirmBcardList = BcardList
         self.confirmAction = actionConfig
-        self.athleteConfirm = Confirm_Ui_Dialog(self.team)
+        self.athleteConfirm = Ui_AthleteConfirmMainWindow(self.team)
         self.athleteConfirm.switch_window_rules.connect(self.show_rules)
         self.athleteConfirm.switch_window_groupSplit.connect(self.show_groupSplit)
         self.config.close()
         self.athleteConfirm.show()
 
     def show_groupSplit(self, teamConfirmValue, group, teamEveryNum):
-        self.groupSplit = Group_Ui_Dialog(teamConfirmValue, group, teamEveryNum, self.confirmAction, self.confirmBcardList)
-        self.groupSplit.switch_window_WodLoop.connect(self.show_wodLoop)
+        self.groupSplit = Ui_GroupSplitMainWindow(teamConfirmValue, group, teamEveryNum, self.confirmAction,
+                                          self.confirmBcardList)
+        self.groupSplit.switch_window_WodLoop.connect(self.show_wodLoopNew)
         self.groupSplit.switch_window_AthleteConfirm.connect(self.show_athleteConfirm)
         self.athleteConfirm.close()
         self.groupSplit.show()
@@ -59,6 +66,12 @@ class Controller:
         self.wodLoop = WodLoop_Ui_Dialog(teamConfirmValue, teamName, group, self.confirmAction, self.confirmBcardList)
         self.groupSplit.close()
         self.wodLoop.show()
+
+    def show_wodLoopNew(self, teamConfirmValue, teamName, group):
+        self.wodLoopNew = Ui_WodLoopMainWindow(teamConfirmValue, teamName, group, self.confirmAction,
+                                               self.confirmBcardList)
+        self.groupSplit.close()
+        self.wodLoopNew.show()
 
 
 def main():
