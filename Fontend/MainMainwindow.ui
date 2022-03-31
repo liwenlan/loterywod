@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>WodLoopMainWindow</class>
+ <widget class="QMainWindow" name="WodLoopMainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>844</width>
+    <height>567</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidgetWhole">
+   <widget class="QPushButton" name="pushButtonConfig">
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>380</y>
+      <width>521</width>
+      <height>80</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+      <horstretch>2</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>15</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>抽取本轮Wod</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelConfigPicture">
+    <property name="geometry">
+     <rect>
+      <x>200</x>
+      <y>80</y>
+      <width>481</width>
+      <height>261</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="text">
+     <string>TextLabel</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>844</width>
+     <height>22</height>
+    </rect>
+   </property>
+  </widget>
+  <action name="actionVersion">
+   <property name="text">
+    <string>版本</string>
+   </property>
+  </action>
+  <action name="actionlContact">
+   <property name="text">
+    <string>联系我们</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

@@ -1,0 +1,632 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>WodLoopMainWindow</class>
+ <widget class="QMainWindow" name="WodLoopMainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>844</width>
+    <height>567</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidgetWhole">
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0" colspan="2">
+     <widget class="QLabel" name="labelTitle">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+        <horstretch>2</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>820</width>
+        <height>30</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>30</height>
+       </size>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>20</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>开始wod吧</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <layout class="QGridLayout" name="gridLayoutTeam_2">
+      <item row="0" column="0">
+       <widget class="QPushButton" name="pushButtonTeamA_2">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>40</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>15</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>A</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QTextBrowser" name="textBrowserTeamA_2">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>240</width>
+          <height>40</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>40</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="2">
+       <widget class="QLabel" name="labelScoreA_2">
+        <property name="font">
+         <font>
+          <pointsize>16</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>分数</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="3">
+       <widget class="QTextBrowser" name="textBrowserScoreA_2">
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>40</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QPushButton" name="pushButtonTeamB_2">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>40</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>15</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>B</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QTextBrowser" name="textBrowserTeamB_2">
+        <property name="minimumSize">
+         <size>
+          <width>240</width>
+          <height>40</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>40</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="2">
+       <widget class="QLabel" name="labelScoreB_2">
+        <property name="font">
+         <font>
+          <pointsize>16</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>分数</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="3">
+       <widget class="QTextBrowser" name="textBrowserScoreB_2">
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>40</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QPushButton" name="pushButtonTeamC_2">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>40</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>15</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>C</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QTextBrowser" name="textBrowserTeamC_2">
+        <property name="minimumSize">
+         <size>
+          <width>240</width>
+          <height>40</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>40</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="2">
+       <widget class="QLabel" name="labelScoreC_2">
+        <property name="font">
+         <font>
+          <pointsize>16</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>分数</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="3">
+       <widget class="QTextBrowser" name="textBrowserScoreC_2">
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>40</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QTextBrowser" name="textBrowserTeamD_2">
+        <property name="minimumSize">
+         <size>
+          <width>240</width>
+          <height>40</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>40</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="2">
+       <widget class="QLabel" name="labelScoreD_2">
+        <property name="font">
+         <font>
+          <pointsize>16</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>分数</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="3">
+       <widget class="QTextBrowser" name="textBrowserScoreD_2">
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>40</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QPushButton" name="pushButtonTeamE_2">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>40</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>15</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>E</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="1">
+       <widget class="QTextBrowser" name="textBrowserTeamE_2">
+        <property name="minimumSize">
+         <size>
+          <width>240</width>
+          <height>40</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>40</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="2">
+       <widget class="QLabel" name="labelScoreE_2">
+        <property name="font">
+         <font>
+          <pointsize>16</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>分数</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="3">
+       <widget class="QTextBrowser" name="textBrowserScoreE_2">
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>40</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QPushButton" name="pushButtonTeamD_2">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>40</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>15</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>D</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="1" column="1">
+     <layout class="QGridLayout" name="gridLayoutCard_2">
+      <item row="2" column="0" colspan="2">
+       <widget class="QPushButton" name="pushButtonPickCard_2">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+          <horstretch>2</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>40</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>40</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>15</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>抽取本轮Wod</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLabel" name="labelCardA_2">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>180</width>
+          <height>240</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>240</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>TextLabel</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QTextBrowser" name="textBrowserWodB_2">
+        <property name="minimumSize">
+         <size>
+          <width>180</width>
+          <height>40</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>40</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QTextBrowser" name="textBrowserWodA_2">
+        <property name="minimumSize">
+         <size>
+          <width>180</width>
+          <height>40</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>40</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="labelCardB_2">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>180</width>
+          <height>240</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>240</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>TextLabel</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="2" column="0" colspan="2">
+     <layout class="QHBoxLayout" name="horizontalLayoutTimer_2">
+      <item>
+       <widget class="QLCDNumber" name="lcdNumberMin_2">
+        <property name="font">
+         <font>
+          <pointsize>30</pointsize>
+         </font>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="labelMin_2">
+        <property name="font">
+         <font>
+          <pointsize>25</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>分</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLCDNumber" name="lcdNumberSec_2">
+        <property name="font">
+         <font>
+          <pointsize>30</pointsize>
+         </font>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="labelSec_2">
+        <property name="font">
+         <font>
+          <pointsize>25</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>秒</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLCDNumber" name="lcdNumberMSec_2">
+        <property name="font">
+         <font>
+          <pointsize>30</pointsize>
+         </font>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="labelMSec_2">
+        <property name="font">
+         <font>
+          <pointsize>25</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>毫秒</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButtonStartTimer_2">
+        <property name="minimumSize">
+         <size>
+          <width>80</width>
+          <height>60</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>20</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>开始计时</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>844</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menu">
+    <property name="title">
+     <string>配置</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menu_2">
+    <property name="title">
+     <string>关于</string>
+    </property>
+    <addaction name="actionVersion"/>
+    <addaction name="actionlContact"/>
+   </widget>
+   <widget class="QMenu" name="menu_3">
+    <property name="title">
+     <string>联系我们</string>
+    </property>
+   </widget>
+   <addaction name="menu"/>
+   <addaction name="menu_2"/>
+   <addaction name="menu_3"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionVersion">
+   <property name="text">
+    <string>版本</string>
+   </property>
+  </action>
+  <action name="actionlContact">
+   <property name="text">
+    <string>联系我们</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
