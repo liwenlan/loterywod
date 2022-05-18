@@ -289,6 +289,7 @@ class Ui_GroupSplitMainWindow(QtWidgets.QMainWindow):
         self.labelTitle.setText(_translate("GroupSplitMainWindow", "抽签分组"))
         self.pushButtonConfirm.setText(_translate("GroupSplitMainWindow", "确认"))
         self.pushButtonStartWod.setText(_translate("GroupSplitMainWindow", "开始wod"))
+        self.lineEditAthleteName.setPlaceholderText(_translate("AthleteConfirmMainWindow", "请输入名字"))
 
         picPath = ":/Resources/PokerPictures/pokerBackBlue.png"
         pic = QtGui.QPixmap(picPath).scaled(self.labelPickCard.width(), self.labelPickCard.height())
@@ -316,9 +317,9 @@ class Ui_GroupSplitMainWindow(QtWidgets.QMainWindow):
     def pickCard(self):
         athleteName = self.lineEditAthleteName.text()
         if (self.teamEveryNum[0] + self.teamEveryNum[1] + self.teamEveryNum[2] + self.teamEveryNum[3]) == 0:
-            QtWidgets.QMessageBox.information(self, '提示', '人满了开始WOD吧')
+            QtWidgets.QMessageBox.information(self, '提示', '人满了搞起')
         elif athleteName == '':
-            QtWidgets.QMessageBox.information(self, '提示', '你不能是无名氏哦')
+            QtWidgets.QMessageBox.information(self, '提示', '壮士留下你的大名')
         else:
             luckyDog = selectAthlete()
             picPath = ':/Resources/PokerPictures/' + luckyDog + '.png'
@@ -355,9 +356,9 @@ class Ui_GroupSplitMainWindow(QtWidgets.QMainWindow):
     def setEveryName(self):
         athleteName = self.lineEditAthleteName.text()
         if self.groupTemp == 0:
-            QtWidgets.QMessageBox.information(self, '提示', '人满了开始WOD吧')
+            QtWidgets.QMessageBox.information(self, '提示', '人满了搞起')
         elif athleteName == '':
-            QtWidgets.QMessageBox.information(self, '提示', '你不能是无名氏哦')
+            QtWidgets.QMessageBox.information(self, '提示', '壮士留下你的大名')
         else:
             athleteName = self.lineEditAthleteName.text()
 

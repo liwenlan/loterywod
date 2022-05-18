@@ -12,6 +12,7 @@ from PyQt5.QtCore import QTime, QTimer
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QApplication, QMainWindow
 from LoteryWod import *
+from modes import *
 
 
 class Ui_WodLoopMainWindow(QtWidgets.QMainWindow):
@@ -26,6 +27,12 @@ class Ui_WodLoopMainWindow(QtWidgets.QMainWindow):
         self.groupName = []
         self.group = group
         self.contDownTime = 10 * 1000  # 10sec
+        self.round = 1
+        self.ScoreA = 0
+        self.ScoreB = 0
+        self.ScoreC = 0
+        self.ScoreD = 0
+        self.ScoreE = 0
         self.setupUi(self)
         self.retranslateUi(self)
         # print(team, teamName, group, confirmAction, confirmBcardList)
@@ -81,14 +88,14 @@ class Ui_WodLoopMainWindow(QtWidgets.QMainWindow):
         self.textBrowserTeamA.setMaximumSize(QtCore.QSize(16777215, 40))
         self.textBrowserTeamA.setObjectName("textBrowserTeamA")
         self.gridLayoutTeam.addWidget(self.textBrowserTeamA, 0, 1, 1, 1)
-        self.labelScoreA = QtWidgets.QLabel(self.centralwidgetWhole)
+        self.buttonScoreA = QtWidgets.QPushButton(self.centralwidgetWhole)
         font = QtGui.QFont()
         font.setPointSize(16)
         font.setBold(True)
         font.setWeight(75)
-        self.labelScoreA.setFont(font)
-        self.labelScoreA.setObjectName("labelScoreA")
-        self.gridLayoutTeam.addWidget(self.labelScoreA, 0, 2, 1, 1)
+        self.buttonScoreA.setFont(font)
+        self.buttonScoreA.setObjectName("buttonScoreA")
+        self.gridLayoutTeam.addWidget(self.buttonScoreA, 0, 2, 1, 1)
         self.textBrowserScoreA = QtWidgets.QTextBrowser(self.centralwidgetWhole)
         self.textBrowserScoreA.setMaximumSize(QtCore.QSize(16777215, 40))
         self.textBrowserScoreA.setObjectName("textBrowserScoreA")
@@ -110,14 +117,14 @@ class Ui_WodLoopMainWindow(QtWidgets.QMainWindow):
         self.textBrowserTeamB.setMaximumSize(QtCore.QSize(16777215, 40))
         self.textBrowserTeamB.setObjectName("textBrowserTeamB")
         self.gridLayoutTeam.addWidget(self.textBrowserTeamB, 1, 1, 1, 1)
-        self.labelScoreB = QtWidgets.QLabel(self.centralwidgetWhole)
+        self.buttonScoreB = QtWidgets.QPushButton(self.centralwidgetWhole)
         font = QtGui.QFont()
         font.setPointSize(16)
         font.setBold(True)
         font.setWeight(75)
-        self.labelScoreB.setFont(font)
-        self.labelScoreB.setObjectName("labelScoreB")
-        self.gridLayoutTeam.addWidget(self.labelScoreB, 1, 2, 1, 1)
+        self.buttonScoreB.setFont(font)
+        self.buttonScoreB.setObjectName("buttonScoreB")
+        self.gridLayoutTeam.addWidget(self.buttonScoreB, 1, 2, 1, 1)
         self.textBrowserScoreB = QtWidgets.QTextBrowser(self.centralwidgetWhole)
         self.textBrowserScoreB.setMaximumSize(QtCore.QSize(16777215, 40))
         self.textBrowserScoreB.setObjectName("textBrowserScoreB")
@@ -139,14 +146,14 @@ class Ui_WodLoopMainWindow(QtWidgets.QMainWindow):
         self.textBrowserTeamC.setMaximumSize(QtCore.QSize(16777215, 40))
         self.textBrowserTeamC.setObjectName("textBrowserTeamC")
         self.gridLayoutTeam.addWidget(self.textBrowserTeamC, 2, 1, 1, 1)
-        self.labelScoreC = QtWidgets.QLabel(self.centralwidgetWhole)
+        self.buttonScoreC = QtWidgets.QPushButton(self.centralwidgetWhole)
         font = QtGui.QFont()
         font.setPointSize(16)
         font.setBold(True)
         font.setWeight(75)
-        self.labelScoreC.setFont(font)
-        self.labelScoreC.setObjectName("labelScoreC")
-        self.gridLayoutTeam.addWidget(self.labelScoreC, 2, 2, 1, 1)
+        self.buttonScoreC.setFont(font)
+        self.buttonScoreC.setObjectName("buttonScoreC")
+        self.gridLayoutTeam.addWidget(self.buttonScoreC, 2, 2, 1, 1)
         self.textBrowserScoreC = QtWidgets.QTextBrowser(self.centralwidgetWhole)
         self.textBrowserScoreC.setMaximumSize(QtCore.QSize(16777215, 40))
         self.textBrowserScoreC.setObjectName("textBrowserScoreC")
@@ -156,14 +163,14 @@ class Ui_WodLoopMainWindow(QtWidgets.QMainWindow):
         self.textBrowserTeamD.setMaximumSize(QtCore.QSize(16777215, 40))
         self.textBrowserTeamD.setObjectName("textBrowserTeamD")
         self.gridLayoutTeam.addWidget(self.textBrowserTeamD, 3, 1, 1, 1)
-        self.labelScoreD = QtWidgets.QLabel(self.centralwidgetWhole)
+        self.buttonScoreD = QtWidgets.QPushButton(self.centralwidgetWhole)
         font = QtGui.QFont()
         font.setPointSize(16)
         font.setBold(True)
         font.setWeight(75)
-        self.labelScoreD.setFont(font)
-        self.labelScoreD.setObjectName("labelScoreD")
-        self.gridLayoutTeam.addWidget(self.labelScoreD, 3, 2, 1, 1)
+        self.buttonScoreD.setFont(font)
+        self.buttonScoreD.setObjectName("buttonScoreD")
+        self.gridLayoutTeam.addWidget(self.buttonScoreD, 3, 2, 1, 1)
         self.textBrowserScoreD = QtWidgets.QTextBrowser(self.centralwidgetWhole)
         self.textBrowserScoreD.setMaximumSize(QtCore.QSize(16777215, 40))
         self.textBrowserScoreD.setObjectName("textBrowserScoreD")
@@ -185,14 +192,14 @@ class Ui_WodLoopMainWindow(QtWidgets.QMainWindow):
         self.textBrowserTeamE.setMaximumSize(QtCore.QSize(16777215, 40))
         self.textBrowserTeamE.setObjectName("textBrowserTeamE")
         self.gridLayoutTeam.addWidget(self.textBrowserTeamE, 4, 1, 1, 1)
-        self.labelScoreE = QtWidgets.QLabel(self.centralwidgetWhole)
+        self.buttonScoreE = QtWidgets.QPushButton(self.centralwidgetWhole)
         font = QtGui.QFont()
         font.setPointSize(16)
         font.setBold(True)
         font.setWeight(75)
-        self.labelScoreE.setFont(font)
-        self.labelScoreE.setObjectName("labelScoreE")
-        self.gridLayoutTeam.addWidget(self.labelScoreE, 4, 2, 1, 1)
+        self.buttonScoreE.setFont(font)
+        self.buttonScoreE.setObjectName("buttonScoreE")
+        self.gridLayoutTeam.addWidget(self.buttonScoreE, 4, 2, 1, 1)
         self.textBrowserScoreE = QtWidgets.QTextBrowser(self.centralwidgetWhole)
         self.textBrowserScoreE.setMaximumSize(QtCore.QSize(16777215, 40))
         self.textBrowserScoreE.setObjectName("textBrowserScoreE")
@@ -259,7 +266,7 @@ class Ui_WodLoopMainWindow(QtWidgets.QMainWindow):
         self.gridLayout.addLayout(self.gridLayoutCard, 1, 1, 1, 1)
 
         # pickCard触发抽取wod的事件
-        self.pushButtonPickCard.clicked.connect(self.pickWod)
+        self.pushButtonPickCard.clicked.connect(self.pickWodJudge)
 
         self.horizontalLayoutTimer = QtWidgets.QHBoxLayout()
         self.horizontalLayoutTimer.setObjectName("horizontalLayoutTimer")
@@ -310,12 +317,12 @@ class Ui_WodLoopMainWindow(QtWidgets.QMainWindow):
         self.pushButtonStartTimer.clicked.connect(self.startWodTimer)
         self.horizontalLayoutTimer.addWidget(self.pushButtonStartTimer)
         self.gridLayout.addLayout(self.horizontalLayoutTimer, 2, 0, 1, 2)
-
-        self.labelScoreA.setVisible(bool(self.teamConfigValue[0]))
-        self.labelScoreB.setVisible(bool(self.teamConfigValue[1]))
-        self.labelScoreC.setVisible(bool(self.teamConfigValue[2]))
-        self.labelScoreD.setVisible(bool(self.teamConfigValue[3]))
-        self.labelScoreE.setVisible(bool(self.teamConfigValue[4]))
+        # 根据队伍的多少显示组件
+        self.buttonScoreA.setVisible(bool(self.teamConfigValue[0]))
+        self.buttonScoreB.setVisible(bool(self.teamConfigValue[1]))
+        self.buttonScoreC.setVisible(bool(self.teamConfigValue[2]))
+        self.buttonScoreD.setVisible(bool(self.teamConfigValue[3]))
+        self.buttonScoreE.setVisible(bool(self.teamConfigValue[4]))
         self.pushButtonTeamA.setVisible(bool(self.teamConfigValue[0]))
         self.pushButtonTeamB.setVisible(bool(self.teamConfigValue[1]))
         self.pushButtonTeamC.setVisible(bool(self.teamConfigValue[2]))
@@ -332,6 +339,12 @@ class Ui_WodLoopMainWindow(QtWidgets.QMainWindow):
         self.textBrowserScoreD.setVisible(bool(self.teamConfigValue[3]))
         self.textBrowserScoreE.setVisible(bool(self.teamConfigValue[4]))
 
+        self.buttonScoreA.clicked.connect(lambda:self.scoreIncrease(1))
+        self.buttonScoreB.clicked.connect(lambda:self.scoreIncrease(2))
+        self.buttonScoreC.clicked.connect(lambda:self.scoreIncrease(3))
+        self.buttonScoreD.clicked.connect(lambda:self.scoreIncrease(4))
+        self.buttonScoreE.clicked.connect(lambda:self.scoreIncrease(5))
+
         WodLoopMainWindow.setCentralWidget(self.centralwidgetWhole)
 
         self.retranslateUi(WodLoopMainWindow)
@@ -342,11 +355,11 @@ class Ui_WodLoopMainWindow(QtWidgets.QMainWindow):
         WodLoopMainWindow.setWindowTitle(_translate("WodLoopMainWindow", "MainWindow"))
         self.labelTitle.setText(_translate("WodLoopMainWindow", "开始wod吧"))
 
-        self.labelScoreA.setText(_translate("WodLoopMainWindow", "分数"))
-        self.labelScoreB.setText(_translate("WodLoopMainWindow", "分数"))
-        self.labelScoreC.setText(_translate("WodLoopMainWindow", "分数"))
-        self.labelScoreD.setText(_translate("WodLoopMainWindow", "分数"))
-        self.labelScoreE.setText(_translate("WodLoopMainWindow", "分数"))
+        self.buttonScoreA.setText(_translate("WodLoopMainWindow", "分数"))
+        self.buttonScoreB.setText(_translate("WodLoopMainWindow", "分数"))
+        self.buttonScoreC.setText(_translate("WodLoopMainWindow", "分数"))
+        self.buttonScoreD.setText(_translate("WodLoopMainWindow", "分数"))
+        self.buttonScoreE.setText(_translate("WodLoopMainWindow", "分数"))
 
         self.pushButtonPickCard.setText(_translate("WodLoopMainWindow", "抽取本轮Wod"))
         self.labelCardB.setText(_translate("WodLoopMainWindow", "TextLabel"))
@@ -357,7 +370,7 @@ class Ui_WodLoopMainWindow(QtWidgets.QMainWindow):
         self.labelMSec.setText(_translate("WodLoopMainWindow", "毫秒"))
         self.pushButtonStartTimer.setText(_translate("WodLoopMainWindow", "开始计时"))
 
-        #根据分组设置每个组的名称
+        # 根据分组设置每个组的名称
         if self.group == 5:
             self.groupName = ['A', 'B', 'C', 'D', 'E']
         else:
@@ -365,9 +378,10 @@ class Ui_WodLoopMainWindow(QtWidgets.QMainWindow):
         self.pushButtonTeamA.setText(_translate("WodLoopMainWindow", self.groupName[0]))
         self.pushButtonTeamB.setText(_translate("WodLoopMainWindow", self.groupName[1]))
         self.pushButtonTeamC.setText(_translate("WodLoopMainWindow", self.groupName[2]))
-        self.pushButtonTeamE.setText(_translate("WodLoopMainWindow", self.groupName[3]))
-        self.pushButtonTeamD.setText(_translate("WodLoopMainWindow", self.groupName[4]))
+        self.pushButtonTeamD.setText(_translate("WodLoopMainWindow", self.groupName[3]))
+        self.pushButtonTeamE.setText(_translate("WodLoopMainWindow", self.groupName[4]))
         self.setEveryTeamName()
+        self.initEveryTeamScore()
 
         # 设置初始的卡片背景
         picPathA = ':/Resources/PokerPictures/pokerBackRed.png'
@@ -379,16 +393,42 @@ class Ui_WodLoopMainWindow(QtWidgets.QMainWindow):
         self.labelCardB.setScaledContents(True)
         self.labelCardA.setScaledContents(True)
 
-    def pickWod(self):  # 抽取卡牌获取wod
+    def scoreIncrease(self, team):
+        if team == 1:
+            self.ScoreA += 1
+            self.textBrowserScoreA.setText(str(self.ScoreA))
+        elif team == 2:
+            self.ScoreB += 1
+            self.textBrowserScoreB.setText(str(self.ScoreB))
+        elif team == 3:
+            self.ScoreC += 1
+            self.textBrowserScoreC.setText(str(self.ScoreC))
+        elif team == 4:
+            self.ScoreD += 1
+            self.textBrowserScoreD.setText(str(self.ScoreD))
+        else:
+            self.ScoreE += 1
+            self.textBrowserScoreE.setText(str(self.ScoreE))
 
-        luckyWodA = selectWod()
-        luckyWodB = selectWod()
-        print("-----------------luckyWodA: ", luckyWodA)
+    def pickWodJudge(self):
+        if self.round <= 5:
+            self.pickWod()
+        else:
+            QtWidgets.QMessageBox.information(self, '提示', 'wod虽好不要贪杯啊')
+
+    def pickWod(self):  # 抽取卡牌获取wod
+        roundText = "当前是第" + str(self.round) + "轮WoD"
+        self.labelTitle.setText(roundText)
+        wodDeck = WodDeck()
+        luckyWodList = modeA4Ui(wodDeck, self.round, self.confirmBcardList)
+        luckyWodA = luckyWodList[0]
+        luckyWodB = luckyWodList[1]
+        # print("-----------------luckyWodA: ", luckyWodA)
         actionA = bindActionByCard(luckyWodA, self.confirmBcardList, self.confirmAction)
-        print("-----------------actionA: ", actionA)
-        print("-----------------luckyWodB: ", luckyWodB)
+        # print("-----------------actionA: ", actionA)
+        # print("-----------------luckyWodB: ", luckyWodB)
         actionB = bindActionByCard(luckyWodB, self.confirmBcardList, self.confirmAction)
-        print("-----------------actionB: ", actionB)
+        # print("-----------------actionB: ", actionB)
         self.textBrowserWodA.setText(actionA)
         self.textBrowserWodB.setText(actionB)
         picPathA = ':/Resources/PokerPictures/' + luckyWodA + '.png'
@@ -401,7 +441,15 @@ class Ui_WodLoopMainWindow(QtWidgets.QMainWindow):
         self.labelCardB.setScaledContents(True)
         # print("luckyWodA：" + luckyWodA + "luckyWodB：" + luckyWodB)
         # print("actionA：" + actionA + "actionB：" + actionB)
+        self.round += 1
         return luckyWodA, luckyWodB
+
+    def initEveryTeamScore(self):  # 初始化每个队伍的分数
+        self.textBrowserScoreA.setText('0')
+        self.textBrowserScoreB.setText('0')
+        self.textBrowserScoreC.setText('0')
+        self.textBrowserScoreD.setText('0')
+        self.textBrowserScoreE.setText('0')
 
     def setEveryTeamName(self):  # 从分组中继承每个队伍中人员的名字
         self.textBrowserTeamA.setText(self.teamNameConfig[0])

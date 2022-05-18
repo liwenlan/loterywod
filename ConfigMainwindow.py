@@ -13,6 +13,9 @@ from LoteryWod import *
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
+wodBomb = []
+
+
 class Ui_ConfigMainWindow(QtWidgets.QMainWindow):
     switch_window = QtCore.pyqtSignal(object, object)
 

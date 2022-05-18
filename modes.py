@@ -4,12 +4,15 @@ import random
 from sys import argv
 from collections import Counter
 import numpy as np
-from Card import AthleteDeck, WodDeck
 
-wodBomb = ['A', '2', '3', '4', '5']
+import ConfigMainwindow
+
+import ConfigMainwindow
+
 rule_A = {'heart': 2, 'spade': 2, 'club': 2, 'diamond': 2, 'bomb': 3}
 
-def rulesForA(flower, num, rule_A):
+
+def rulesForA(flower, num, rule_A, wodBomb):
     if num in wodBomb:
         flower = 'bomb'
     rule_A[flower] = rule_A[flower] - 1
@@ -19,7 +22,7 @@ def rulesForA(flower, num, rule_A):
 def rulesForPerRound_A():
     pass
 
-def selectActionWithoutBack(wodDeck, card_flower, card_number, rule_A, index):
+def selectActionWithoutBack(card_flower, card_number, rule_A, wodBomb):
     """
     1. 选取动作，不放回
     2. 一次抽两张牌
@@ -27,23 +30,42 @@ def selectActionWithoutBack(wodDeck, card_flower, card_number, rule_A, index):
     """
     if card_flower == [] and rule_A['bomb'] != 0:
         action = np.random.choice(['heart', 'spade', 'club', 'diamond'], 1, True)
-        num = np.random.choice(['A', '2', '3', '4', '5'], 1, True)  # 随机选取一个元素
+        num = np.random.choice(wodBomb, 1, True)  # 随机选取一个元素
     else:
         num = np.random.choice(card_number, 1, False)  # 随机选取一个元素
         action = np.random.choice(card_flower, 1, False)  # 随机选取一个元素
 
     print("抽牌card is ", action[0] + '_' + num[0])
-    rulesForA(action[0], num[0], rule_A)  # 更新剩余次数
+    rulesForA(action[0], num[0], rule_A, wodBomb)  # 更新剩余次数
     print("remain is ", rule_A)
 
-    if num in wodDeck.bomb:
-        for b in wodDeck.bomb:
+    if num in wodBomb:
+        for b in wodBomb:
             card_number.remove(b)
     else:
         for a in action:
             card_flower.remove(a)
+    return action[0] + '_' + num[0]
 
 
+
+def modeA4Ui(wodDeck, round, wodBomb):
+    totalTime = 30  # min
+    print("第", round, "轮")
+    card_flower = ['heart', 'spade', 'club', 'diamond']
+    card_number = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K']
+    for action in rule_A:
+        if rule_A[action] == 0:
+            if action != 'bomb':
+                card_flower.remove(action)
+            else:
+                card_number = ['6', '7', '8', '9', '10', 'J', 'Q', 'K']
+    selectedCardList = ['', '']
+    selectedCardList[0] = selectActionWithoutBack(card_flower, card_number, rule_A, wodBomb)
+    selectedCardList[1] = selectActionWithoutBack(card_flower, card_number, rule_A, wodBomb)
+
+    print("------------------------------------")
+    return selectedCardList
 
 def modeA():
     totalTime = 30  # min

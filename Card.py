@@ -20,10 +20,10 @@ class WodDeck:
     #          ]
     # 动作
     flower = ['heart', 'spade', 'club', 'diamond']
-
-    # 次数
-    number = ['6', '7', '8', '9', '10', 'J', 'Q', 'K']
-    bomb = ['A', '2', '3', '4', '5']
+    numbers = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K']
+    # # 次数
+    # number = ['6', '7', '8', '9', '10', 'J', 'Q', 'K']
+    # bomb = ['A', '2', '3', '4', '5']
     # card = [flower, number]
 
     def __len__(self):
